@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+            $table->string('user_id', 100)->nullable(false);
             $table->string('refresh_token', 100)->nullable(false);
             $table->string('user_agent', 100)->nullable(false);
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

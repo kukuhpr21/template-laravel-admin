@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_has_menus', function (Blueprint $table) {
+        Schema::create('menu_has_permissions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('user_id', 36)->nullable(false);
             $table->unsignedBigInteger('menu_id')->nullable(false);
-            $table->primary(['user_id', 'menu_id']);
-            $table->foreign('user_id')->on('users')->references('id')->onDelete('restrict')->onUpdate('restrict');
+            $table->string('permission_id', 50)->nullable(false);
+            $table->primary(['menu_id', 'permission_id']);
             $table->foreign('menu_id')->on('menus')->references('id')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('permission_id')->on('permissions')->references('id')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_has_menus');
+        Schema::dropIfExists('menu_has_permissions');
     }
 };

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_has_roles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('user_id', 100)->nullable(false);
+            $table->string('user_id', 36)->nullable(false);
             $table->string('role_id', 50)->nullable(false);
             $table->primary(['user_id', 'role_id']);
             $table->foreign('user_id')->on('users')->references('id')->onDelete('restrict')->onUpdate('restrict');

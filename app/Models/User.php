@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Model
 {
@@ -21,5 +22,10 @@ class User extends Model
     public function menus(): BelongsToMany
     {
         return $this->belongsToMany(Menu::class)->using(UserHasRole::class);
+    }
+
+    public function status(): HasOne
+    {
+        return $this->hasOne(Status::class, 'status_id', 'id');
     }
 }

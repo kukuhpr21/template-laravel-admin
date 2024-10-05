@@ -10,6 +10,7 @@ class Role extends Model
     protected $table = "roles";
     protected $primaryKey = "id";
     protected $keyType = "string";
+    public $timestamps = false;
     public $incrementing = false;
 
     public function users(): BelongsToMany

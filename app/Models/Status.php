@@ -10,6 +10,7 @@ class Status extends Model
     protected $table = "statuses";
     protected $primaryKey = "id";
     protected $keyType = "string";
+    public $timestamps = false;
     public $incrementing = false;
 
     public function users(): BelongsTo

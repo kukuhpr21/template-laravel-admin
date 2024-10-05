@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -12,6 +15,25 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        User::insert([
+            [
+                'id' => (string) Str::uuid(),
+                'status_id' => 'active',
+                'name' => 'The Super Admin',
+                'username' => 'usersuadmin',
+                'password' => Hash::make('password'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'id' => (string) Str::uuid(),
+                'status_id' => 'active',
+                'name' => 'The Admin',
+                'username' => 'useradmin',
+                'password' => Hash::make('password'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
     }
 }

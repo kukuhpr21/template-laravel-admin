@@ -10,5 +10,6 @@ class Permission extends Model
     protected $table = "permissions";
     protected $primaryKey = "id";
     protected $keyType = "string";
+    public $timestamps = false;
     public $incrementing = false;
 }

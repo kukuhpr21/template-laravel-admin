@@ -15,7 +15,9 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('user_id', 36)->nullable(false);
-            $table->string('refresh_token', 100)->nullable(false);
+            $table->string('ip_address', 45)->nullable();
+            $table->enum('type', ['refresh_token', 'other'])->default('other');
+            $table->longText('data', 100)->nullable(false);
             $table->string('user_agent', 100)->nullable(false);
             $table->foreign('user_id')->on('users')->references('id')->onDelete('restrict')->onUpdate('restrict');
         });

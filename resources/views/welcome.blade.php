@@ -73,8 +73,8 @@
     </div>
 
 
-<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
-    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+<nav class="fixed top-0 z-50 w-full bg-white m-5 rounded-lg">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3 m-2 rounded-lg">
       <div class="flex items-center justify-between">
         <div class="flex items-center justify-start rtl:justify-end">
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
@@ -126,7 +126,7 @@
     </div>
   </nav>
 
-  <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0" aria-label="Sidebar">
+  <aside id="logo-sidebar" class="fixed m-2 rounded-lg top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0" aria-label="Sidebar">
      <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
            <li>

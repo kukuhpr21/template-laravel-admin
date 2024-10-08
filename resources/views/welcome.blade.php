@@ -72,7 +72,7 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="#"
-                        class="flex items-center px-2 py-3 font-semibold bg-blue-100 text-gray-900 rounded-lg hover:bg-blue-100 group">
+                        class="flex items-center px-2 py-3 font-medium bg-blue-100 text-gray-900 rounded-lg hover:bg-blue-100 group">
                         <i class="ri-home-2-fill ri-xl transition duration-75 group-hover:text-gray-900"
                             aria-hidden="true"></i>
                         <span class="ms-3">Dashboard</span>

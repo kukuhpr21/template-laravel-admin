@@ -28,9 +28,9 @@
                         <span class="sr-only">Open sidebar</span>
                         <i class="ri-align-left ri-xl text-gray-800"></i>
                     </button>
-                    <a href="https://flowbite.com" class="lg:flex items-center ms-2 md:me-24 hidden">
+                    <a href="#" class="lg:flex items-end ms-2 md:me-24 hidden">
                         <span class="font-bold text-xl text-white bg-blue-500 rounded-md px-3 py-2">A</span>
-                        <span class="font-bold text-lg text-gray-800 pl-2">Admin</span>
+                        <span class="font-semibold text-xl text-gray-600 pl-2">Admin</span>
                     </a>
                 </div>
                 <!-- Toggle Profile -->
@@ -74,20 +74,21 @@
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="#"
-                        class="flex items-center px-2 py-3 font-medium bg-blue-200 text-gray-900 rounded-lg hover:bg-blue-100 group">
-                        <i class="ri-home-2-fill ri-xl transition duration-75 group-hover:text-gray-900"
+                        class="flex items-center px-2 py-3 font-medium bg-blue-200 text-gray-900 rounded-lg hover:bg-blue-200 group">
+                        <i class="ri-home-2-line ri-xl transition duration-75 text-blue-500 group-hover:text-blue-500"
                             aria-hidden="true"></i>
-                        <span class="ms-3">Dashboard</span>
+                        <span class="ms-3 text-blue-500 group-hover:text-blue-500">Dashboard</span>
                     </a>
                 </li>
                 <li>
                     <button type="button"
-                        class="flex items-center w-full px-2 py-3 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-100"
+                        class="flex items-center w-full px-2 py-3 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-200"
                         aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                         <i
-                            class="ri-shopping-basket-line ri-xl text-gray-900 transition duration-75 group-hover:ri-shopping-basket-fill"></i>
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-                        <i class="ri-arrow-down-s-line ri-xl"></i>
+                            class="ri-shopping-basket-line ri-xl text-gray-500 group-hover:text-blue-500 transition duration-75 group-hover:ri-shopping-basket-fill"></i>
+                        <span
+                            class="flex-1 ms-3 text-left text-gray-500 group-hover:text-blue-500 rtl:text-right whitespace-nowrap">E-commerce</span>
+                        <i class="ri-arrow-down-s-line ri-xl text-gray-500 group-hover:text-blue-500"></i>
                     </button>
                     <ul id="dropdown-example" class="hidden py-2 space-y-2">
                         <li>

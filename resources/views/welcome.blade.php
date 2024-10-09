@@ -18,7 +18,7 @@
 
 <body class="bg-gray-200">
 
-    <nav class="fixed top-0 z-50 w-full bg-white drop-shadow-md rounded-bl-xl rounded-br-xl">
+    <nav class="fixed top-0 z-50 w-full bg-white">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
@@ -30,20 +30,22 @@
                     </button>
                     <a href="https://flowbite.com" class="lg:flex items-center ms-2 md:me-24 hidden">
                         <span class="font-bold text-xl text-white bg-blue-500 rounded-md px-3 py-2">A</span>
-                        <span class="font-medium text-lg text-gray-800 pl-2">Admin</span>
+                        <span class="font-bold text-lg text-gray-800 pl-2">Admin</span>
                     </a>
                 </div>
                 <!-- Toggle Profile -->
                 <div class="relative inline-block text-left">
                     <div class="flex">
                         <button type="button"
-                            class="inline-flex w-full items-center justify-center gap-x-1.5 bg-gray-100 rounded-md px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200"
+                            class="inline-flex w-full items-center justify-center gap-x-1.5 bg-gray-100 rounded-md lg:px-4 px-2 lg:py-2 py-1 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200"
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img src="{{ asset('images/ic_def_profile.png') }}" alt="profile" class="w-8 h-8">
+                            <img src="{{ asset('images/ic_def_profile.png') }}" alt="profile"
+                                class="lg:w-10 lg:h-10 w-8 h-8">
                             <div class="flex flex-col px-1 items-start">
-                                <span class="text-base font-semibold text-gray-800">John Doe</span>
-                                <span class="text-sm font-normal text-gray-600">Admin</span>
+                                <span class="lg:text-base text-sm lg:font-semibold font-medium text-gray-800">John
+                                    Doe</span>
+                                <span class="lg:text-sm text-xs lg:font-normal font-light text-gray-600">Admin</span>
                             </div>
                         </button>
                     </div>
@@ -66,13 +68,13 @@
     </nav>
 
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 rounded-lg h-screen mt-24 transition-transform -translate-x-full bg-white sm:translate-x-0"
+        class="fixed top-0 left-0 z-40 w-64 rounded-lg h-screen pt-24 transition-transform -translate-x-full bg-white sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-white rounded-lg">
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="#"
-                        class="flex items-center px-2 py-3 font-medium bg-blue-100 text-gray-900 rounded-lg hover:bg-blue-100 group">
+                        class="flex items-center px-2 py-3 font-medium bg-blue-200 text-gray-900 rounded-lg hover:bg-blue-100 group">
                         <i class="ri-home-2-fill ri-xl transition duration-75 group-hover:text-gray-900"
                             aria-hidden="true"></i>
                         <span class="ms-3">Dashboard</span>

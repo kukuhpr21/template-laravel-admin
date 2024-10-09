@@ -15,10 +15,12 @@
         rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
-<body>
+<body class="bg-gray-200">
     {{ $slot }}
+    @livewireScripts
 </body>
 
 </html>

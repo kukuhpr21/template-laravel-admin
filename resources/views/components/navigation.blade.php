@@ -8,7 +8,9 @@
                     <span class="sr-only">Open sidebar</span>
                     <i class="ri-align-left ri-xl text-gray-800"></i>
                 </button>
-                <x-logo />
+                <a href="{{ route('dashboard') }}" class="lg:flex items-end ms-2 md:me-24 hidden">
+                    <x-logo />
+                </a>
             </div>
             <!-- Toggle Profile -->
             <div class="relative inline-block text-left">

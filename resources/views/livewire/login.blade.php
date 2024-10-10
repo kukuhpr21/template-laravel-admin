@@ -3,11 +3,11 @@
         <div class="flex justify-center w-full">
             <x-logo showDesc="false" />
         </div>
-        <x-input-label wire:model='form.username' type="text" name="Username" />
+        <x-input-label type="text" name="Username" />
         @error('form.username')
             <x-invalid-input-form>{{$message}}</x-invalid-input-form>
         @enderror
-        <x-input-label wire:model='form.password' type="password" name="Password" />
+        <x-input-label type="password" name="Password" />
         @error('form.password')
         <x-invalid-input-form>{{$message}}</x-invalid-input-form>
         @enderror

@@ -17,7 +17,7 @@ class LoginForm extends Form
 
     public function login()
     {
-        $this->validate();
+
         if (Auth::attempt($this->validate())) {
             return redirect()->route('dashboard');
         }

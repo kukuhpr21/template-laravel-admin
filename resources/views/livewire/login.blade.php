@@ -10,5 +10,5 @@
     @error('form.password')
     <x-invalid-input-form>{{$message}}</x-invalid-input-form>
     @enderror
-    <x-button type="submit" bg="teal">Log In</x-button>
+    <button type="submit" class="bg-teal-500 hover:bg-teal-700 text-white w-full text-lg font-medium rounded-2xl hover:shadow-xl my-3 p-5">Log In</button>
 </form>

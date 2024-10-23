@@ -24,10 +24,10 @@
     @endphp
     <x-layout :class="$classLayout">
         <x-sidebar />
-        <div class="flex flex-col w-full lg:pl-64 transition-all">
+        <div class="flex flex-col w-full lg:pl-[270px] transition-all">
             <x-navbar />
 
-            <div class="p-4 m-2 rounded-lg h-screen overflow-auto">
+            <div class="py-4 m-2 rounded-lg h-screen overflow-auto">
                 {{ $slot }}
             </div>
         </div>

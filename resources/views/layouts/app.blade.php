@@ -18,14 +18,20 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-200">
-    <x-navigation />
-    <x-sidebar />
-    <div class="px-4 py-8  sm:ml-64">
-        <div class="p-4 mt-14">
-            {{ $slot }}
+<body>
+    @php
+        $classLayout = "flex flex-row w-full h-screen overflow-auto";
+    @endphp
+    <x-layout :class="$classLayout">
+        <x-sidebar />
+        <div class="flex flex-col w-full lg:pl-64 transition-all">
+            <x-navbar />
+
+            <div class="p-4 m-2 rounded-lg h-screen overflow-auto">
+                {{ $slot }}
+            </div>
         </div>
-    </div>
+    </x-layout>
     @livewireScripts
 </body>
 

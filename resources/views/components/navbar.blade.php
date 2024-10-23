@@ -4,7 +4,7 @@
             <i class="ri-align-left ri-xl"></i>
         </button>
         <div class="flex flex-col">
-            <span class="text-sm text-slate-400 font-light">Hello,<i class="ri-star-smile-line"></i></span>
+            <span class="text-sm text-slate-400 font-light">Hello,</span>
             <span class="text-base text-slate-700 font-medium">Kukuh Prakoso</span>
         </div>
     </div>

@@ -18,8 +18,10 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-200">
-    {{ $slot }}
+<body>
+    <x-layout class="flex h-screen w-screen items-center justify-center">
+        {{ $slot }}
+    </x-layout>
     @livewireScripts
 </body>
 

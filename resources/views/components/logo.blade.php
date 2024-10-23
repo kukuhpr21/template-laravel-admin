@@ -5,6 +5,6 @@
     $show = $showDesc == 'true' ? '' : 'hidden';
 @endphp
 <div class="flex flex-row items-end p-2">
-    <span class="font-bold text-xl text-white bg-gray-400 rounded-md px-4 py-2">{{ $letter }}</span>
+    <span class="font-bold text-xl text-white bg-gray-600 rounded-md px-4 py-2">{{ $letter }}</span>
     <span class="font-semibold text-xl text-gray-600 pl-2 {{ $show }}">{{ $name }}</span>
 </div>

@@ -1,4 +1,4 @@
-import 'flowbite';
+import 'preline';
 import 'remixicon/fonts/remixicon.css';
 
 

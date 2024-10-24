@@ -1,4 +1,4 @@
-<nav class="flex flex-row items-center justify-between sticky top-0 z-50 w-full bg-teal-50 p-2">
+<nav class="flex flex-row items-center justify-between sticky top-0 z-50 w-full bg-gradient-to-r from-teal-50 to-teal-100 p-2">
     <div class="flex flex-row gap-2 items-center">
         <button class="lg:hidden hover:rounded-xl hover:bg-slate-100 hover:drop-shadow-lg p-2" aria-haspopup="dialog" aria-expanded="false" aria-controls="sidebar" aria-label="Toggle navigation" data-hs-overlay="#sidebar">
             <i class="ri-align-left ri-xl"></i>

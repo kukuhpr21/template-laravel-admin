@@ -1,1 +1,1 @@
-<span class="text-lg text-gray-400 font-normal">{{ $slot }}</span>
+<span class="text-lg text-gray-600 font-normal">{{ $slot }}</span>

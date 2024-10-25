@@ -1,6 +1,6 @@
 @props(['class'])
 @php
-    $classLayout = "$class bg-gradient-to-r from-gray-50 to-gray-100"
+    $classLayout = "$class bg-slate-200"
 @endphp
 <div class="{{ $classLayout }}">
     {{ $slot }}

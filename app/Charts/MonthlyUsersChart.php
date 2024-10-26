@@ -18,9 +18,10 @@ class MonthlyUsersChart
         $chart =  $this->chart->lineChart();
         $chart->setTitle('Sales during 2021.');
         $chart->setSubtitle('Physical sales vs Digital sales.');
-        $chart->addLine('Physical sales', [40, 93, 35, 42, 18, 82]);
+        $chart->addLine('Physical sales', [40, 93, 77, 42, 18, 82]);
         $chart->addLine('Digital sales', [70, 29, 77, 28, 55, 45]);
-        $chart->setXAxis(categories: ['January', 'February', 'March', 'April', 'May', 'June']);
+        $chart->setXAxis( ['January', 'February', 'Maret', 'April', 'May', 'June']);
+        $chart->setWidth(600);
         return $chart;
     }
 }

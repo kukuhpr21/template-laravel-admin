@@ -1,3 +1,5 @@
+<x-add-css add="leaflet"/>
+<x-add-js add="leaflet" :up="true"/>
 <x-page title="Dashboard">
     <div class="flex flex-col gap-4">
         <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:gap-4 gap-6 lg:px-0 px-2">
@@ -23,9 +25,10 @@
             </x-card>
         </div>
         <div class="grid lg:grid-cols-2 sm:grid-cols-1 lg:gap-4 gap-6 lg:px-0 px-2">
-            <x-card addclass="flex flex-col gap-3 bg-blue-100">
+            <x-card addclass="flex bg-blue-100">
                 {!! $chart->container() !!}
             </x-card>
+            <x-card-map id="map" addclass="flex flex-col bg-white"/>
         </div>
     </div>
 </x-page>
@@ -33,4 +36,11 @@
 <script src="{{ $chart->cdn() }}"></script>
 
 {{ $chart->script() }}
+<script>
+    let map = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+</script>
 @endpush

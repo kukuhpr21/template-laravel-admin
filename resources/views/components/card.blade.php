@@ -1,4 +1,4 @@
 @props(['addclass'])
-<div class="{{ $addclass }} drop-shadow-md shadow-gray-50 py-7 px-5 rounded-lg" {{ $attributes }}>
+<div class="{{ $addclass }} py-7 px-5 rounded-lg hover:drop-shadow-xl" {{ $attributes }}>
 {{ $slot }}
 </div>

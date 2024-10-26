@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e61a9e00bbb47903e2f49a08bafe4ecb",
+    "content-hash": "baebc0f544c2b08b12c0cc0768461197",
     "packages": [
         {
             "name": "brick/math",
@@ -1895,6 +1895,48 @@
                 }
             ],
             "time": "2024-10-01T12:40:06+00:00"
+        },
+        {
+            "name": "maantje/charts",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maantje/charts.git",
+                "reference": "a987eff11188f0f0e8008dc0d92b887347a116b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maantje/charts/zipball/a987eff11188f0f0e8008dc0d92b887347a116b1",
+                "reference": "a987eff11188f0f0e8008dc0d92b887347a116b1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "laravel/pint": "^1.17",
+                "pestphp/pest": "^2.35",
+                "phpstan/phpstan": "^1.12"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maantje\\Charts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jamie Schouten",
+                    "email": "j4mie@hey.com"
+                }
+            ],
+            "description": "SVG Charts in PHP",
+            "support": {
+                "issues": "https://github.com/maantje/charts/issues",
+                "source": "https://github.com/maantje/charts/tree/0.1.1"
+            },
+            "time": "2024-09-04T22:35:46+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Charts\MonthlyUsersChart;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
-    public function render()
+    public function render(MonthlyUsersChart $chart)
     {
-        return view('livewire.dashboard');
+        $data = ['chart' => $chart->build()];
+
+        return view('livewire.dashboard', ['chart' => $chart->build()]);
     }
 }

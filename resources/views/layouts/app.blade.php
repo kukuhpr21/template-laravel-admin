@@ -33,6 +33,6 @@
         </div>
     </x-layout>
     @livewireScripts
+    @stack('scripts')
 </body>
-
 </html>

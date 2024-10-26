@@ -28,7 +28,7 @@
             <x-card addclass="flex bg-blue-100">
                 {!! $chart->container() !!}
             </x-card>
-            <x-card-map id="map" addclass="flex flex-col bg-white"/>
+            <x-card-map id="map"/>
         </div>
     </div>
 </x-page>

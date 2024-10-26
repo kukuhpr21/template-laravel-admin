@@ -15,11 +15,12 @@ class MonthlyUsersChart
 
     public function build(): LarapexChart
     {
-        return $this->chart->lineChart()
-            ->setTitle('Sales during 2021.')
-            ->setSubtitle('Physical sales vs Digital sales.')
-            ->addData('Physical sales', [40, 93, 35, 42, 18, 82])
-            ->addData('Digital sales', [70, 29, 77, 28, 55, 45])
-            ->setXAxis(categories: ['January', 'February', 'March', 'April', 'May', 'June']);
+        $chart =  $this->chart->lineChart();
+        $chart->setTitle('Sales during 2021.');
+        $chart->setSubtitle('Physical sales vs Digital sales.');
+        $chart->addLine('Physical sales', [40, 93, 35, 42, 18, 82]);
+        $chart->addLine('Digital sales', [70, 29, 77, 28, 55, 45]);
+        $chart->setXAxis(categories: ['January', 'February', 'March', 'April', 'May', 'June']);
+        return $chart;
     }
 }

@@ -22,8 +22,6 @@ class LoginForm extends Form
             return redirect()->route('dashboard');
         }
 
-        throw ValidationException::withMessages([
-            'Invalid username or password'
-        ]);
+        session()->flash('failed', 'Invalid username or password');
     }
 }

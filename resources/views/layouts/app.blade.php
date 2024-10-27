@@ -22,10 +22,7 @@
 </head>
 
 <body>
-    @php
-        $classLayout = "flex flex-row w-full h-screen overflow-auto";
-    @endphp
-    <x-layout :class="$classLayout">
+    <x-layout class="flex flex-row w-full h-screen overflow-auto">
         <x-sidebar />
         <div class="flex flex-col w-full lg:pl-[270px] transition-all">
             <x-navbar />

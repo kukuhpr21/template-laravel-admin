@@ -1,6 +1,6 @@
 <!-- need for map -->
 <x-add-css add="leaflet"/>
-<x-add-js add="leaflet" :up="true"/>
+<x-add-js add="leaflet"/>
 
 <x-page title="Dashboard">
     <div class="flex flex-col gap-4">

@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'id' => (string) Str::uuid(),
                 'status_id' => 'active',
                 'name' => 'The Super Admin',
-                'username' => 'usersuadmin',
+                'email' => 'superadmin@gmail.com',
                 'password' => Hash::make('password'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 'id' => (string) Str::uuid(),
                 'status_id' => 'active',
                 'name' => 'The Admin',
-                'username' => 'useradmin',
+                'email' => 'admin@gmail.com',
                 'password' => Hash::make('password'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

@@ -2,15 +2,13 @@
 
 namespace App\Livewire\Forms;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class LoginForm extends Form
 {
     #[Validate(['required'])]
-    public string $username = "";
+    public string $email = "";
 
     #[Validate(['required'])]
     public string $password = "";
@@ -18,10 +16,10 @@ class LoginForm extends Form
     public function login()
     {
 
-        if (Auth::attempt($this->validate())) {
-            return redirect()->route('dashboard');
-        }
+        // if (Auth::attempt($this->validate())) {
+        //     return redirect()->route('dashboard');
+        // }
 
-        session()->flash('failed', 'Invalid username or password');
+        // session()->flash('failed', 'Invalid username or password');
     }
 }

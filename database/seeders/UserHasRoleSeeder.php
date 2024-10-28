@@ -14,8 +14,8 @@ class UserHasRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $userSuperAdmin = User::where('username', 'usersuadmin')->first();
-        $userAdmin = User::where('username', 'useradmin')->first();
+        $userSuperAdmin = User::where('email', 'superadmin@gmail.com')->first();
+        $userAdmin = User::where('email', 'admin@gmail.com')->first();
         UserHasRole::insert([
             [
                 'user_id' => $userSuperAdmin->id,

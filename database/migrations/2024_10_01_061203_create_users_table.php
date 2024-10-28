@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('id')->primary(); // Set UUID as the primary key
             $table->string('status_id', 50)->nullable(false);
             $table->string('name', 100)->nullable(false);
-            $table->string('username', 100)->unique('users_username_unique');
+            $table->string('email', 100)->unique('users_email_unique');
             $table->string('password', 100);
             $table->timestamps();
             $table->foreign('status_id')->on('statuses')->references('id')->onDelete('restrict')->onUpdate('restrict');

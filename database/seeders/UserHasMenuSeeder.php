@@ -24,8 +24,8 @@ class UserHasMenuSeeder extends Seeder
         $userWithRole = Menu::where('name', 'User With Role')->first();
         $userWithMenu = Menu::where('name', 'User With Menu')->first();
         $sessionManagement = Menu::where('name', 'Session Management')->first();
-        $userSuperAdmin = User::where('username', 'usersuadmin')->first();
-        $userAdmin = User::where('username', 'useradmin')->first();
+        $userSuperAdmin = User::where('email', 'superadmin@gmail.com')->first();
+        $userAdmin = User::where('email', 'admin@gmail.com')->first();
         $usermenu = [
             [
                 'user_id' => $userAdmin->id,

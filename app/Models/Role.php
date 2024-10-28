@@ -15,11 +15,11 @@ class Role extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class)->using(UserHasRole::class);
+        return $this->belongsToMany(User::class, 'user_has_roles');
     }
 
     public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(Menu::class)->using(UserHasRole::class);
+        return $this->belongsToMany(Menu::class, 'role_has_menus');
     }
 }

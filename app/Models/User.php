@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,12 +27,12 @@ class User extends Authenticatable
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class)->using(UserHasRole::class);
+        return $this->belongsToMany(Role::class, 'user_has_roles');
     }
 
     public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(Menu::class)->using(UserHasRole::class);
+        return $this->belongsToMany(Menu::class, 'user_has_menus');
     }
 
     public function status(): HasOne

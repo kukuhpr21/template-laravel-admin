@@ -1,7 +1,3 @@
-<!-- need for map -->
-<x-add-css add="leaflet"/>
-<x-add-js add="leaflet"/>
-
 <x-page title="Dashboard">
     <div class="flex flex-col gap-4">
         <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:gap-4 gap-6 lg:px-0 px-2">
@@ -28,9 +24,9 @@
         </div>
         <div class="grid lg:grid-cols-2 sm:grid-cols-1 lg:gap-4 gap-6 lg:px-0 px-2">
             <x-card addclass="flex bg-blue-100">
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <canvas id="myChart"></canvas>
             </x-card>
-            <x-card-map id="map"/>
+            <x-card-map id="map" description="Map using leaflet"/>
         </div>
     </div>
 </x-page>

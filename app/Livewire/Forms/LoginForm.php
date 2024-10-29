@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -14,7 +15,7 @@ class LoginForm extends Form
     #[Validate(['required'])]
     public string $password = "";
 
-    public function losgin()
+    public function login()
     {
 
         // find user ssby email
@@ -25,9 +26,11 @@ class LoginForm extends Form
                 ->first();
 
         if ($user) {
-
+            $passwordMatch = Hash::check($request['password'], $user->password);
+            if ($passwordMatch) {
+            } else {
+            }
         } else {
-
         }
         // if (Auth::attempt($this->validate())) {
         //     return redirect()->route('dashboard');

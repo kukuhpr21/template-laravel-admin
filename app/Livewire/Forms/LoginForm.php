@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\User;
+use App\Services\User\UserService;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -15,27 +16,14 @@ class LoginForm extends Form
     #[Validate(['required'])]
     public string $password = "";
 
-    public function login()
+    private UserService $userService;
+
+    public function login(): bool
     {
+        $this->userService = new UserService();
 
         // find user ssby email
         $request = $this->validate();
-        $user = User::with('roles')
-                ->with('menus')
-                ->where('email', $request['email'])
-                ->first();
-
-        if ($user) {
-            $passwordMatch = Hash::check($request['password'], $user->password);
-            if ($passwordMatch) {
-            } else {
-            }
-        } else {
-        }
-        // if (Auth::attempt($this->validate())) {
-        //     return redirect()->route('dashboard');
-        // }
-
-        // session()->flash('failed', 'Invalid username or password');
+        return $this->userService->login($request['email'], $request['password']);
     }
 }

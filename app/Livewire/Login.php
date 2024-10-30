@@ -16,7 +16,6 @@ class Login extends Component
     {
         $successLogin = $this->form->login();
         if ($successLogin) {
-            $this->dispatch('sweet-alert', icon: 'success', title: 'Success Log In');
             return redirect()->route('dashboard');
         } else {
             $this->dispatch('sweet-alert', icon: 'error', title: 'Invalid Email or Password');

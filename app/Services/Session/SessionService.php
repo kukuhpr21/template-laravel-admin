@@ -44,4 +44,9 @@ class SessionService implements ISessionService
         $mainValue = $this->getMain();
         unset($mainValue[$key]);
     }
+
+    public function isExist(): bool
+    {
+        return count($this->getMain()) > 0;
+    }
 }

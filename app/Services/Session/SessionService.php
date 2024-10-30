@@ -19,8 +19,7 @@ class SessionService implements ISessionService
         }
 
         try {
-            $decryptedValue = Crypt::decrypt($encValue);
-            return json_decode($decryptedValue, true);
+            return Crypt::decrypt($encValue);
         } catch (DecryptException $e) {
             Log::error('SessionService (getMain-> error decrypt) : '. $e->getMessage());
             return [];

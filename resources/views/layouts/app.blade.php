@@ -32,6 +32,7 @@
             </div>
         </div>
     </x-layout>
+    <x-sweet-alert/>
     @livewireScripts
     @stack('scripts')
 </body>

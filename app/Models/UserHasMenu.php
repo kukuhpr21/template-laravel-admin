@@ -11,4 +11,5 @@ class UserHasMenu extends Pivot
     protected $keyType = "string";
     public $timestamps = false;
     public $incrementing = false;
+    protected $hidden = ['pivot'];
 }

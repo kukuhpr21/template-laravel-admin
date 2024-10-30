@@ -13,6 +13,8 @@ class Role extends Model
     public $timestamps = false;
     public $incrementing = false;
 
+    protected $hidden = ['pivot'];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user_has_roles');

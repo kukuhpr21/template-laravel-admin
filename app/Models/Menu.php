@@ -12,6 +12,7 @@ class Menu extends Model
     protected $keyType = "int";
     public $timestamps = false;
     public $incrementing = true;
+    protected $hidden = ['pivot'];
 
     public function roles(): BelongsToMany
     {

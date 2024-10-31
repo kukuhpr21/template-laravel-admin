@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\Session\SessionService;
 use Closure;
 use Illuminate\Http\Request;
+use App\Services\Session\SessionService;
 use Symfony\Component\HttpFoundation\Response;
 
-class Auth
+class EnsureSessionIsValid
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,13 @@ class Auth
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $unprotectedPath = ['login'];
         $sessionService = new SessionService();
 
         if ($sessionService->isExist()) {
-
+            if (in_array($request->path(), $unprotectedPath)) {
+                return redirect()->route("dashboard");
+            }
             return $next($request);
         }
         return redirect()->route("login");

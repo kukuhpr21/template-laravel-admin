@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\LoginForm;
+use App\Services\Session\SessionService;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -12,13 +13,28 @@ class Login extends Component
 {
     public LoginForm $form;
 
+    private SessionService $sessionService;
+
     public function login()
     {
         $successLogin = $this->form->login();
         if ($successLogin) {
+
+            $this->sessionService = new SessionService();
+
+            $tempRole       = $this->sessionService->get('temp_role');
+            $tempRoleDecode = json_decode($tempRole, true);
+
+            if (count($tempRoleDecode) > 1) {
+                return redirect()->route('choose-role');
+            }
+
+            $this->sessionService->save('role', json_encode($tempRoleDecode[0]));
+            $this->sessionService->delete('temp_role');
+
             return redirect()->route('dashboard');
         } else {
-            $this->dispatch('sweet-alert', icon: 'error', title: 'Invalid Email or Password');
+            $this->dispatch('sweet-alert-notif', icon: 'error', title: 'Invalid Email or Password');
         }
     }
 

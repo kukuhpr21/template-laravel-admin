@@ -5,7 +5,7 @@
         </button>
         <div class="flex flex-col">
             <span class="text-sm text-slate-400 font-light">Hello,</span>
-            <span class="text-base text-slate-700 font-medium">Kukuh Prakoso</span>
+            <span class="text-base text-slate-700 font-medium">{{ $name }}</span>
         </div>
     </div>
     <div class="hs-dropdown relative inline-flex mr-2">
@@ -15,8 +15,8 @@
                     <i class="ri-user-line lg:ri-xl ri-lg text-gray-300"></i>
                 </span>
                 <div class="flex flex-col items-start">
-                    <span class="text-sm text-slate-700 lg:font-normal font-light">Kukuh Prakoso</span>
-                    <span class="text-xs text-slate-400 lg:font-light font-extralight">Super Admin</span>
+                    <span class="text-sm text-slate-700 lg:font-normal font-light">{{ $name }}</span>
+                    <span class="text-xs text-slate-400 lg:font-light font-extralight">{{ $role }}</span>
                 </div>
             </div>
             <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="p-1 space-y-0.5">
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
+                <a href="{{ route('logout') }}" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" href="#">
                 Sign out
                 </a>
             </div>

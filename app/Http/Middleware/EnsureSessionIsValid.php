@@ -23,6 +23,19 @@ class EnsureSessionIsValid
             if (in_array($request->path(), $unprotectedPath)) {
                 return redirect()->route("dashboard");
             }
+
+            if (!empty($sessionService->get('temp_role'))) {
+
+                if ($request->path() != 'choose-role') {
+
+                    return redirect()->route('choose-role');
+                }
+            }
+
+            return $next($request);
+        }
+
+        if (in_array($request->path(), $unprotectedPath)) {
             return $next($request);
         }
         return redirect()->route("login");

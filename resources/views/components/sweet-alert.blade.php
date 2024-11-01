@@ -1,6 +1,6 @@
 <div x-data="{open: false}"
     x-show="open"
-    @sweet-alert.window="
+    @sweet-alert-notif.window="
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',

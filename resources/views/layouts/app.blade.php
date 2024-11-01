@@ -25,7 +25,7 @@
     <x-layout class="flex flex-row w-full h-screen overflow-auto">
         <x-sidebar />
         <div class="flex flex-col w-full lg:pl-[270px] transition-all">
-            <x-navbar />
+            <livewire:navbar />
 
             <div class="py-4 m-2 rounded-lg h-screen overflow-auto">
                 {{ $slot }}

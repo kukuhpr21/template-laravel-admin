@@ -9,6 +9,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.guest')]
+#[Title('Log In')]
 class Login extends Component
 {
     public LoginForm $form;

@@ -36,13 +36,23 @@ class SessionService implements ISessionService
     public function get(string $key): string
     {
         $mainValue = $this->getMain();
-        return $mainValue[$key];
+        if (array_key_exists($key, $mainValue)) {
+            return $mainValue[$key];
+        }
+        return "";
     }
 
     public function delete(string $key): void
     {
         $mainValue = $this->getMain();
         unset($mainValue[$key]);
+        $encValue = Crypt::encrypt($mainValue);
+        session()->put($this->key, $encValue);
+    }
+
+    public function deleteMain(): void
+    {
+        session()->remove($this->key);
     }
 
     public function isExist(): bool

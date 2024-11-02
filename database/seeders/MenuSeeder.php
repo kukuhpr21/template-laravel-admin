@@ -83,12 +83,5 @@ class MenuSeeder extends Seeder
         ];
 
         Menu::insert($subMenuMapping);
-
-        Menu::create([
-            'name' => 'Session Management',
-            'link' => 'settings/session-management',
-            'parent' => $menuSettings->id,
-            'order' => 5,
-        ]);
     }
 }

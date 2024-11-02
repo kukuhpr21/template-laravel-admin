@@ -33,20 +33,20 @@ class UserService implements IUserService
             if ($passwordMatch) {
                 // build tree menu
                 $menus = $this->menuService->allByUser($user->id);
-                dd($menus);
 
-                $this->saveProfileToSession($user);
+                $this->saveProfileToSession($user, $menus);
                 return true;
             }
         }
         return false;
     }
 
-    private function saveProfileToSession($user): void
+    private function saveProfileToSession($user, $menus): void
     {
         $this->sessionService->save('id', $user->id);
         $this->sessionService->save('name', $user->name);
         $this->sessionService->save('email', $user->email);
         $this->sessionService->save('temp_role', $user->roles);
+        $this->sessionService->save('menus', $menus);
     }
 }

@@ -16,6 +16,8 @@ class UserHasMenuSeeder extends Seeder
     public function run(): void
     {
         $dashboard = Menu::where('name', 'Dashboard')->first();
+        $settings = Menu::where('name', 'Settings')->first();
+        $mapping = Menu::where('name', 'Mapping')->first();
         $role = Menu::where('name', 'Role')->first();
         $menu = Menu::where('name', 'Menu')->first();
         $permission = Menu::where('name', 'Permission')->first();
@@ -23,17 +25,13 @@ class UserHasMenuSeeder extends Seeder
         $roleWithMenu = Menu::where('name', 'Role With Menu')->first();
         $userWithRole = Menu::where('name', 'User With Role')->first();
         $userWithMenu = Menu::where('name', 'User With Menu')->first();
-        $sessionManagement = Menu::where('name', 'Session Management')->first();
         $userSuperAdmin = User::where('email', 'superadmin@gmail.com')->first();
         $userAdmin = User::where('email', 'admin@gmail.com')->first();
+
         $usermenu = [
             [
                 'user_id' => $userAdmin->id,
                 'menu_id' => $dashboard->id
-            ],
-            [
-                'user_id' => $userAdmin->id,
-                'menu_id' => $sessionManagement->id
             ],
             [
                 'user_id' => $userSuperAdmin->id,
@@ -69,8 +67,12 @@ class UserHasMenuSeeder extends Seeder
             ],
             [
                 'user_id' => $userSuperAdmin->id,
-                'menu_id' => $sessionManagement->id
-            ]
+                'menu_id' => $settings->id
+            ],
+            [
+                'user_id' => $userSuperAdmin->id,
+                'menu_id' => $mapping->id
+            ],
         ];
         UserHasMenu::insert($usermenu);
     }

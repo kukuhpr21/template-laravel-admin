@@ -15,6 +15,8 @@ class RoleHasMenuSeeder extends Seeder
     public function run(): void
     {
         $dashboard = Menu::where('name', 'Dashboard')->first();
+        $settings = Menu::where('name', 'Settings')->first();
+        $mapping = Menu::where('name', 'Mapping')->first();
         $role = Menu::where('name', 'Role')->first();
         $menu = Menu::where('name', 'Menu')->first();
         $permission = Menu::where('name', 'Permission')->first();
@@ -22,15 +24,11 @@ class RoleHasMenuSeeder extends Seeder
         $roleWithMenu = Menu::where('name', 'Role With Menu')->first();
         $userWithRole = Menu::where('name', 'User With Role')->first();
         $userWithMenu = Menu::where('name', 'User With Menu')->first();
-        $sessionManagement = Menu::where('name', 'Session Management')->first();
+
         $rolemenu = [
             [
                 'role_id' => 'admin',
                 'menu_id' => $dashboard->id
-            ],
-            [
-                'role_id' => 'admin',
-                'menu_id' => $sessionManagement->id
             ],
             [
                 'role_id' => 'super_admin',
@@ -66,8 +64,12 @@ class RoleHasMenuSeeder extends Seeder
             ],
             [
                 'role_id' => 'super_admin',
-                'menu_id' => $sessionManagement->id
-            ]
+                'menu_id' => $settings->id
+            ],
+            [
+                'role_id' => 'super_admin',
+                'menu_id' => $mapping->id
+            ],
         ];
         RoleHasMenu::insert($rolemenu);
     }

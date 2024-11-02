@@ -15,6 +15,7 @@ class MenuSeeder extends Seeder
     {
         Menu::create([
             'name' => 'Dashboard',
+            'icon' => 'ri-home-6-line',
             'link' => '/',
             'parent' => 0,
             'order' => 1,
@@ -22,6 +23,7 @@ class MenuSeeder extends Seeder
 
         $menuSettings = Menu::create([
             'name' => 'Settings',
+            'icon' => 'ri-tools-line',
             'parent' => 0,
             'order' => 100,
         ]);

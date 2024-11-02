@@ -23,7 +23,6 @@ class MenuHasPermissionSeeder extends Seeder
         $roleWithMenu = Menu::where('name', 'Role With Menu')->first();
         $userWithRole = Menu::where('name', 'User With Role')->first();
         $userWithMenu = Menu::where('name', 'User With Menu')->first();
-        $sessionManagement = Menu::where('name', 'Session Management')->first();
         $menuPermissions = [
             [
                 'menu_id' => $dashboard->id,
@@ -57,10 +56,6 @@ class MenuHasPermissionSeeder extends Seeder
                 'menu_id' => $userWithMenu->id,
                 'permission_id' => 'mapping_user_menu',
             ],
-            [
-                'menu_id' => $sessionManagement->id,
-                'permission_id' => 'view_session_management',
-            ]
         ];
 
         MenuHasPermission::insert($menuPermissions);

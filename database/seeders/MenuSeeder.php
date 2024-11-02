@@ -16,7 +16,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Dashboard',
             'icon' => 'ri-home-6-line',
-            'link' => '/',
+            'link' => 'dashboard',
             'parent' => 0,
             'order' => 1,
         ]);
@@ -59,25 +59,25 @@ class MenuSeeder extends Seeder
 
         $subMenuMapping = [
             [
-                'name' => 'Menu With Permission',
+                'name' => 'Menu Permission',
                 'link' => 'settings/mapping/menus-permissions',
                 'parent' => $menumapping->id,
                 'order' => 1,
             ],
             [
-                'name' => 'Role With Menu',
+                'name' => 'Role Menu',
                 'link' => 'settings/mapping/roles-menus',
                 'parent' => $menumapping->id,
                 'order' => 2,
             ],
             [
-                'name' => 'User With Role',
+                'name' => 'User Role',
                 'link' => 'settings/mapping/users-roles',
                 'parent' => $menumapping->id,
                 'order' => 3,
             ],
             [
-                'name' => 'User With Menu',
+                'name' => 'User Menu',
                 'link' => 'settings/mapping/users-menus',
                 'parent' => $menumapping->id,
                 'order' => 4,

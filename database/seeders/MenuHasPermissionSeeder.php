@@ -19,10 +19,10 @@ class MenuHasPermissionSeeder extends Seeder
         $role = Menu::where('name', 'Role')->first();
         $menu = Menu::where('name', 'Menu')->first();
         $permission = Menu::where('name', 'Permission')->first();
-        $menuWithPermission = Menu::where('name', 'Menu With Permission')->first();
-        $roleWithMenu = Menu::where('name', 'Role With Menu')->first();
-        $userWithRole = Menu::where('name', 'User With Role')->first();
-        $userWithMenu = Menu::where('name', 'User With Menu')->first();
+        $menuWithPermission = Menu::where('name', 'Menu Permission')->first();
+        $roleWithMenu = Menu::where('name', 'Role Menu')->first();
+        $userWithRole = Menu::where('name', 'User Role')->first();
+        $userWithMenu = Menu::where('name', 'User Menu')->first();
         $menuPermissions = [
             [
                 'menu_id' => $dashboard->id,

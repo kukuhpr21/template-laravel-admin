@@ -5,9 +5,10 @@ namespace App\Services\Menu;
 use App\Dto\MenuDto;
 use App\Models\Menu;
 use App\Models\RoleHasMenu;
-use App\Models\MenuHasPermission;
 use App\Models\UserHasMenu;
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\MenuHasPermission;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class MenuService implements IMenuService
 {
@@ -59,7 +60,12 @@ class MenuService implements IMenuService
 
     public function allByUser(string $userID, bool $buildTree = true): array
     {
-        $menus = UserHasMenu::where('user_id', $userID)->orderBy('menu_id', 'asc')->get();
+        $menus = UserHasMenu::select('id', 'name', 'link', 'icon', 'parent', 'order')
+                ->where('user_id', $userID)
+                ->leftJoin('menus', 'menus.id', '=', 'user_has_menus.menu_id')
+                ->orderBy('order', 'asc')
+                ->get()->toArray();
+
         return $buildTree ? $this->buildTreeMenu($menus) : $menus;
     }
 
@@ -90,19 +96,23 @@ class MenuService implements IMenuService
         return !$menuHasPermission && !$roleHasMenu && !$userHasMenu;
     }
 
-    private function buildTreeMenu(Collection $menus, int $parent = 0): array
+    private function buildTreeMenu(array $menus, int $parent = 0): array
     {
         $tree = [];
 
         foreach ($menus as $element) {
-            if ($element) {
-                if ($element->parent == $parent) {
-                    $children = self::buildTreeMenu($menus, $element->id);
-                    if ($children) {
-                        $element->children = $children;
-                    }
-                    $tree[] = $element;
+
+            if ($element['parent'] == $parent) {
+
+                $children = self::buildTreeMenu($menus, $element['id']);
+
+                $element['children'] = [];
+
+                if ($children) {
+                    $element['children'] = $children;
                 }
+
+                $tree[] = $element;
             }
         }
 

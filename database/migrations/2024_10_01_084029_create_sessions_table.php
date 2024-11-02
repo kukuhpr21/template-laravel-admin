@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('user_id', 36)->nullable(false);
             $table->string('ip_address', 45)->nullable();
             $table->enum('type', ['refresh_token', 'other'])->default('other');
-            $table->longText('data', 100)->nullable(false);
+            $table->longText('data')->nullable(false);
             $table->string('user_agent', 100)->nullable(false);
             $table->foreign('user_id')->on('users')->references('id')->onDelete('restrict')->onUpdate('restrict');
         });

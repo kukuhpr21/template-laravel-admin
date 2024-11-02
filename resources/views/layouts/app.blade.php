@@ -23,7 +23,8 @@
 
 <body>
     <x-layout class="flex flex-row w-full h-screen overflow-auto">
-        <x-sidebar />
+        {{-- <x-sidebar /> --}}
+        <livewire:sidebar />
         <div class="flex flex-col w-full lg:pl-[270px] transition-all">
             <livewire:navbar />
 

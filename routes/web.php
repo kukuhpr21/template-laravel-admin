@@ -10,7 +10,7 @@ Route::middleware([EnsureSessionIsValid::class])->group(function () {
 
     Route::get('/choose-role', \App\Livewire\ChooseRole::class)->name('choose-role');
 
-    Route::get('/', \App\Livewire\Dashboard::class)->name('dashboard');
+    Route::get('/dashboard', \App\Livewire\Dashboard::class)->name('dashboard');
 
     Route::get('/logout', function () {
         $sessionService = new SessionService();

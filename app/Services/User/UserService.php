@@ -47,6 +47,6 @@ class UserService implements IUserService
         $this->sessionService->save('name', $user->name);
         $this->sessionService->save('email', $user->email);
         $this->sessionService->save('temp_role', $user->roles);
-        $this->sessionService->save('menus', $menus);
+        $this->sessionService->save('menus', json_encode($menus));
     }
 }

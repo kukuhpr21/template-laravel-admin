@@ -26,35 +26,35 @@ class MenuHasPermissionSeeder extends Seeder
         $menuPermissions = [
             [
                 'menu_id' => $dashboard->id,
-                'permission_id' => 'view_dashboard',
+                'permission_id' => 'view',
             ],
             [
                 'menu_id' => $role->id,
-                'permission_id' => 'view_role',
+                'permission_id' => 'view',
             ],
             [
                 'menu_id' => $menu->id,
-                'permission_id' => 'view_menu',
+                'permission_id' => 'view',
             ],
             [
                 'menu_id' => $permission->id,
-                'permission_id' => 'view_permission',
+                'permission_id' => 'view',
             ],
             [
                 'menu_id' => $menuWithPermission->id,
-                'permission_id' => 'mapping_menu_permission',
+                'permission_id' => 'create',
             ],
             [
                 'menu_id' => $roleWithMenu->id,
-                'permission_id' => 'mapping_role_menu',
+                'permission_id' => 'create',
             ],
             [
                 'menu_id' => $userWithRole->id,
-                'permission_id' => 'mapping_user_role',
+                'permission_id' => 'create',
             ],
             [
                 'menu_id' => $userWithMenu->id,
-                'permission_id' => 'mapping_user_menu',
+                'permission_id' => 'create',
             ],
         ];
 

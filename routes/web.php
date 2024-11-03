@@ -6,11 +6,11 @@ use App\Http\Middleware\EnsureSessionIsValid;
 
 
 Route::middleware([EnsureSessionIsValid::class])->group(function () {
-    Route::get('/login', \App\Livewire\Login::class)->name('login');
+    Route::get('/login', \App\Livewire\Guest\Login::class)->name('login');
 
-    Route::get('/choose-role', \App\Livewire\ChooseRole::class)->name('choose-role');
+    Route::get('/choose-role', \App\Livewire\Guest\ChooseRole::class)->name('choose-role');
 
-    Route::get('/dashboard', \App\Livewire\Dashboard::class)->name('dashboard');
+    Route::get('/dashboard', \App\Livewire\Main\Dashboard::class)->name('dashboard');
 
     Route::get('/logout', function () {
         $sessionService = new SessionService();

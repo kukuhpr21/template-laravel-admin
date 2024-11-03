@@ -4,7 +4,6 @@
     </div>
     <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
         <ul class="space-y-1.5">
-            {{-- { !! $menus !! } --}}
             {!! $menus !!}
         </ul>
     </nav>

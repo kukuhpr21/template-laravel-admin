@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Partials;
 
 use Livewire\Component;
 use App\Services\Session\SessionService;
@@ -37,6 +37,6 @@ class Navbar extends Component
             'name' => $this->name,
             'role' => $this->role,
         ];
-        return view('livewire.navbar',$data);
+        return view('livewire.partials.navbar',$data);
     }
 }

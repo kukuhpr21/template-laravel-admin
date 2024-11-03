@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Guest;
 
+use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 use App\Livewire\Forms\LoginForm;
 use App\Services\Session\SessionService;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
-use Livewire\Component;
 
 #[Layout('layouts.guest')]
 #[Title('Log In')]
@@ -41,6 +41,6 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.login');
+        return view('livewire.guest.login');
     }
 }

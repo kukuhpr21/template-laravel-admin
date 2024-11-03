@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Guest;
 
 use App\Dto\KeyValDto;
-use App\Livewire\Forms\ChooseRoleForm;
 use Livewire\Component;
-use Livewire\Attributes\Layout;
+use App\Livewire\Forms\ChooseRoleForm;
 use App\Services\Session\SessionService;
 
-#[Layout('layouts.guest')]
 class ChooseRole extends Component
 {
     public ChooseRoleForm $form;
@@ -40,6 +38,6 @@ class ChooseRole extends Component
             'roles' => $roles
         ];
 
-        return view('livewire.choose-role', $data);
+        return view('livewire.guest.choose-role', $data);
     }
 }

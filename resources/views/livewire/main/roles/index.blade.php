@@ -1,14 +1,10 @@
 <x-page title="Daftar Role">
     {{-- <div>
-        @foreach ($roles as $item)
+        @foreach ($data as $item)
             <span>{{ $item->name }}</span>
         @endforeach
-    </div>
+    </div> --}}
 
-    {{ $roles->links() }} --}}
-    @livewire('partials.table', [
-        'columns' => $columns,
-        'data' => $data
-    ])
+    <livewire:main.roles.role-table></livewire:main.roles.role-table>
 
 </x-page>

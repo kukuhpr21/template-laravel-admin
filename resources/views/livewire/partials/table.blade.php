@@ -4,10 +4,10 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
             @foreach($this->columns() as $column)
-            <th wire:click="sort('{{ $column->key }}')" class="py-3">
+            <th wire:click="sort('{{ $column->key[0] }}')" class="py-3">
                 <div class="py-3 px-6 flex items-center cursor-pointer">
                   {{ $column->label }}
-                  @if($sortBy === $column->key)
+                  @if($sortBy === $column->key[0])
                     @if ($sortDirection === 'asc')
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                            fill="currentColor">
@@ -35,9 +35,23 @@
               @foreach($this->columns() as $column)
                 <td class="py-4">
                   <div class="py-3 px-6 flex items-center cursor-pointer">
+                    @php
+                        $val = '';
+
+                        if (count($column->key) > 1) {
+                            $data = [];
+                            foreach ($column->key as $key) {
+                                array_push($data, $key);
+                            }
+                            $val = implode('.', $data);
+                        } else {
+                            $val = $row[$column->key[0]];
+                        }
+
+                    @endphp
                     <x-dynamic-component
                         :component="$column->component"
-                        :value="$row[$column->key]"
+                        :value="$val"
                     >
                     </x-dynamic-component>
                   </div>

@@ -2,8 +2,8 @@
     <div class="px-6">
         <x-logo />
     </div>
-    <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-        <ul class="space-y-1.5">
+    <nav class="hs-accordion-group p-4 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+        <ul class="space-y-1.5 gap-2">
             {!! $menus !!}
         </ul>
     </nav>

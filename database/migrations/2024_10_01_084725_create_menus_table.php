@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100)->nullable(false);
             $table->string('link', 100)->nullable(false)->default('#');
+            $table->string('link_alias', 100)->nullable(false)->default('#');
             $table->string('icon', 100)->nullable(false)->default('#');
             $table->bigInteger('parent')->nullable(false)->default(0);
             $table->bigInteger('order')->nullable(false)->default(0);

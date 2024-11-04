@@ -16,7 +16,27 @@ Route::middleware([EnsureSessionIsValid::class])->group(function () {
 
     Route::get('/dashboard', \App\Livewire\Main\Dashboard::class)->name('dashboard');
 
-    Route::get('/settings/roles', \App\Livewire\Main\Roles\Index::class)->name('roles');
+    Route::prefix('settings')->group(function () {
+
+        Route::get('roles', \App\Livewire\Main\Roles\Index::class)->name('roles');
+
+        Route::get('menus', \App\Livewire\Main\Roles\Index::class)->name('menus');
+
+        Route::get('permissions', \App\Livewire\Main\Roles\Index::class)->name('permissions');
+
+        Route::prefix('mapping')->group(function () {
+
+            Route::get('menus-permissions', \App\Livewire\Main\Roles\Index::class)->name('menus-permissions');
+
+            Route::get('roles-menus', \App\Livewire\Main\Roles\Index::class)->name('roles-menus');
+
+            Route::get('users-roles', \App\Livewire\Main\Roles\Index::class)->name('users-roles');
+
+            Route::get('users-menus', \App\Livewire\Main\Roles\Index::class)->name('users-menus');
+        });
+
+    });
+
 
     Route::get('/logout', function () {
         $sessionService = new SessionService();

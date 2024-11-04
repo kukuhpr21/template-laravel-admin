@@ -20,9 +20,14 @@ class RoleTable extends Table
     public function columns() : array
     {
         return [
-            Column::make('id', 'ID'),
-            Column::make('name', 'Name'),
-            // Column::make('name', 'Status')->component('columns.status')
+            Column::make(['id'], 'ID'),
+            Column::make(['name'], 'Name'),
+            Column::make(['id'], 'Action')->component('columns.roles.action')
         ];
+    }
+
+    public function delete($id)
+    {
+        dd("masuk delete : ".$id);
     }
 }

@@ -18,7 +18,15 @@ Route::middleware([EnsureSessionIsValid::class])->group(function () {
 
     Route::prefix('settings')->group(function () {
 
-        Route::get('roles', \App\Livewire\Main\Roles\Index::class)->name('roles');
+        Route::prefix('roles')->group(function () {
+
+            Route::get('/', \App\Livewire\Main\Roles\Index::class)->name('roles');
+
+            Route::prefix('edit')->group(function () {
+                Route::get('{id}', \App\Livewire\Main\Roles\Index::class)->name('roles-edit');
+            });
+        });
+
 
         Route::get('menus', \App\Livewire\Main\Roles\Index::class)->name('menus');
 

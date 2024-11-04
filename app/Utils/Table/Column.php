@@ -5,7 +5,7 @@ class Column
 {
   public string $component = 'columns.column';
 
-  public string $key;
+  public array $key;
 
   public string $label;
 

@@ -2,10 +2,8 @@
 
 namespace App\Services\Session;
 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Crypt;
 use App\Services\Session\ISessionService;
-use Illuminate\Contracts\Encryption\DecryptException;
+use App\Utils\CryptUtils;
 
 class SessionService implements ISessionService
 {
@@ -18,18 +16,13 @@ class SessionService implements ISessionService
             return [];
         }
 
-        try {
-            return Crypt::decrypt($encValue);
-        } catch (DecryptException $e) {
-            Log::error('SessionService (getMain-> error decrypt) : '. $e->getMessage());
-            return [];
-        }
+        return CryptUtils::dec($encValue) ?? [];
     }
     public function save(string $key, string $value): void
     {
         $mainValue       = $this->getMain();
         $mainValue[$key] = $value;
-        $encValue        = Crypt::encrypt($mainValue);
+        $encValue        = CryptUtils::enc($mainValue);
         session()->put($this->key, $encValue);
     }
 
@@ -46,7 +39,7 @@ class SessionService implements ISessionService
     {
         $mainValue = $this->getMain();
         unset($mainValue[$key]);
-        $encValue = Crypt::encrypt($mainValue);
+        $encValue = CryptUtils::enc($mainValue);
         session()->put($this->key, $encValue);
     }
 

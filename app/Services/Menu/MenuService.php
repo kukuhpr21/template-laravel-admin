@@ -17,6 +17,7 @@ class MenuService implements IMenuService
         $menu = new Menu();
         $menu->name = $dto->name;
         $menu->link = !empty($dto->link) ? $dto->link : '#';
+        $menu->link_alias = !empty($dto->linkAlias) ? $dto->linkAlias : '#';
         $menu->icon = !empty($dto->icon) ? $dto->icon : '#';
         $menu->parent = $dto->parent;
         $menu->order = $dto->order;
@@ -30,6 +31,7 @@ class MenuService implements IMenuService
             $menu->id,
             $menu->name,
             $menu->link,
+            $menu->link_alias,
             $menu->icon,
             $menu->parent,
             $menu->order
@@ -48,6 +50,7 @@ class MenuService implements IMenuService
                         $menu->id,
                         $menu->name,
                         $menu->link,
+                        $menu->linkAlias,
                         $menu->icon,
                         $menu->parent,
                         $menu->order
@@ -60,7 +63,7 @@ class MenuService implements IMenuService
 
     public function allByUser(string $userID, bool $buildTree = true): array
     {
-        $menus = UserHasMenu::select('id', 'name', 'link', 'icon', 'parent', 'order')
+        $menus = UserHasMenu::select('id', 'name', 'link', 'link_alias', 'icon', 'parent', 'order')
                 ->where('user_id', $userID)
                 ->leftJoin('menus', 'menus.id', '=', 'user_has_menus.menu_id')
                 ->orderBy('order', 'asc')
@@ -83,6 +86,7 @@ class MenuService implements IMenuService
         $menu = $menu->where('id', $dto->id)->first();
         $menu->name = $dto->name;
         $menu->link = $dto->link;
+        $menu->link_alias = $dto->linkAlias;
         $menu->icon = $dto->icon;
         $menu->parent = $dto->parent;
         $menu->order = $dto->order;

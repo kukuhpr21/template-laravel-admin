@@ -38,7 +38,7 @@ class Sidebar extends Component
             }
 
             if ($item['children']) {
-                $id = $item['id'].'accordion';
+                $id = $item['id'].'-accordion';
                 $tree .= '<li class="hs-accordion" id="'.$id.'">';
                 $tree .= '<button type="button" class="hs-accordion-toggle '. $isActive .' hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100" aria-expanded="true" aria-controls="'.$id.'">';
                 $tree .= $icon;
@@ -52,7 +52,7 @@ class Sidebar extends Component
                 $tree .= '</ul>';
             } else {
                 $tree .= '<li class="my-2">';
-                $tree .= '<a class="flex items-center gap-x-3.5 py-2 px-3 '. $isActive .' text-sm text-gray-700 rounded-lg hover:bg-gray-100" href="'.$item['link'].'">';
+                $tree .= '<a class="flex items-center gap-x-3.5 py-2 px-3 '. $isActive .' text-sm text-gray-700 rounded-lg hover:bg-gray-100" href="'.route($item['link_alias']).'">';
                 $tree .= $icon;
                 $tree .= $item['name'];
                 $tree .= '</a>';

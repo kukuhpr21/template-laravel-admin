@@ -13,7 +13,7 @@
                 <table class="min-w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-slate-200">
                         <tr>
-                            @if ($showIndex)
+                            @if ($showIndexColumn)
                                 <th class="py-3">
                                     <div class="py-3 px-6 flex items-center cursor-pointer">
                                         #
@@ -39,7 +39,7 @@
                                 $index++;
                             @endphp
                             <tr class="bg-white border-b hover:bg-gray-50">
-                                @if ($showIndex)
+                                @if ($showIndexColumn)
                                     <td class="py-4">
                                         <div class="py-3 px-6 flex items-center cursor-pointer">
                                         {{ $index }}

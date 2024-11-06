@@ -12,7 +12,7 @@ class RoleTable extends Table
 {
     public bool $buttonAdd = true;
 
-    public bool $showIndex = true;
+    public bool $showIndexColumn = true;
 
     public $perPage = 2;
 

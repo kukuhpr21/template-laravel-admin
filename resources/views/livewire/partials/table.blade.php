@@ -1,7 +1,14 @@
-<div>
+<div class="flex flex-col gap-2">
+
+    @if ($buttonAdd)
+        <a href="{{ $buttonAddLink }}" class="w-fit my-2 bg-slate-500 text-white rounded-lg p-3 hover:drop-shadow-lg hover:bg-slate-600 focus:outline-none focus:bg-slate-600 disabled:opacity-50 disabled:pointer-events-none">
+            <i class="ri-add-line"></i>
+            {{ $buttonAddtext }}
+        </a>
+    @endif
     <div class="relative overflow-x-auto shadow-md rounded-lg">
       <table class="w-full text-sm text-left text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <thead class="text-xs text-gray-700 uppercase bg-slate-200">
           <tr>
             @foreach($this->columns() as $column)
             <th wire:click="sort('{{ $column->key[0] }}')" class="py-3">

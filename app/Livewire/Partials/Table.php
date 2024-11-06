@@ -10,6 +10,12 @@ abstract class Table extends Component
 {
     use WithPagination;
 
+    public bool $buttonAdd = false;
+
+    public string $buttonAddtext = 'Tambah';
+
+    public string $buttonAddLink = '#';
+
     public $perPage = 10;
 
     public $page = 1;

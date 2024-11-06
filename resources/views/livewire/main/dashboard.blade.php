@@ -1,4 +1,4 @@
-<x-page title="Dashboard">
+<x-page title="Dashboard" :showButtonBack="false">
     <div class="flex flex-col gap-4">
         <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:gap-4 gap-6 lg:px-0 px-2">
             <x-card addclass="flex flex-col gap-3 bg-teal-100">

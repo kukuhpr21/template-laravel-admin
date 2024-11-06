@@ -26,6 +26,8 @@ abstract class Table extends Component
 
     public $sortDirection = 'asc';
 
+    public $search = '';
+
     public abstract function query(): Builder;
 
     public abstract function columns(): array;

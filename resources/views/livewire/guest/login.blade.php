@@ -2,11 +2,11 @@
     <div class="flex justify-center w-full">
         <x-logo showDesc="false" />
     </div>
-    <x-input-label type="email" name="Email" />
+    <x-input-label type="email" name="Email" :form="true"/>
     @error('form.email')
         <x-invalid-input-form>{{$message}}</x-invalid-input-form>
     @enderror
-    <x-input-label type="password" name="Password" />
+    <x-input-label type="password" name="Password" :form="true"/>
     @error('form.password')
     <x-invalid-input-form>{{$message}}</x-invalid-input-form>
     @enderror

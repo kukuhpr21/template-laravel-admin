@@ -2,7 +2,7 @@
     <div class="flex justify-center w-full">
         <x-logo showDesc="false" />
     </div>
-    <x-select-label name="Role" val_default_select="Pilih Role" :items="$roles" />
+    <x-select-label name="Role" val_default_select="Pilih Role" :items="$roles" :form="true"/>
     @error('form.role')
         <x-invalid-input-form>{{$message}}</x-invalid-input-form>
     @enderror

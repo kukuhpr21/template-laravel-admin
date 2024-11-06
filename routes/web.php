@@ -22,8 +22,12 @@ Route::middleware([EnsureSessionIsValid::class])->group(function () {
 
             Route::get('/', \App\Livewire\Main\Roles\Index::class)->name('roles');
 
+            Route::prefix('add')->group(function () {
+                Route::get('/', \App\Livewire\Main\Roles\Create::class)->name('roles-add');
+            });
+
             Route::prefix('edit')->group(function () {
-                Route::get('{id}', \App\Livewire\Main\Roles\Index::class)->name('roles-edit');
+                Route::get('{id}', \App\Livewire\Main\Roles\Edit::class)->name('roles-edit');
             });
         });
 

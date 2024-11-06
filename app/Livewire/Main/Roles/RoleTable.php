@@ -10,8 +10,14 @@ use Illuminate\Database\Eloquent\Builder;
 
 class RoleTable extends Table
 {
+    public bool $buttonAdd = true;
+
     public $perPage = 2;
 
+    public function __construct()
+    {
+        $this->buttonAddLink = route('roles-add');
+    }
     public function query() : Builder
     {
         return Role::query();

@@ -7,10 +7,13 @@
         </a>
     @endif
 
+    <div class="flex flex-row justify-end">
+        <x-input type="text" placeholder="Pencarian..." name="search" class="bg-slate-300 focus:bg-slate-300 w-full lg:w-1/4 md:w-1/2"/>
+    </div>
     <div class="-m-1.5 overflow-x-auto shadow-md rounded-lg">
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="overflow-hidden">
-                <table class="min-w-full text-sm text-left text-gray-500">
+                <table class="min-w-full text-sm text-left text-gray-500 rounded-lg">
                     <thead class="text-xs text-gray-700 uppercase bg-slate-200">
                         <tr>
                             @if ($showIndexColumn)
@@ -31,48 +34,61 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $index = 0;
-                        @endphp
-                        @foreach($this->data() as $row)
+                        @if (count($this->data()) > 0)
                             @php
-                                $index++;
+                                $index = 0;
                             @endphp
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                @if ($showIndexColumn)
-                                    <td class="py-4">
-                                        <div class="py-3 px-6 flex items-center cursor-pointer">
-                                        {{ $index }}
-                                        </div>
-                                    </td>
-                                @endif
-                                @foreach($this->columns() as $column)
-                                    <td class="py-4">
-                                    <div class="py-3 px-6 flex items-center cursor-pointer">
-                                        @php
-                                            $val = '';
+                            @foreach($this->data() as $row)
+                                @php
+                                    $index++;
+                                @endphp
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    @if ($showIndexColumn)
+                                        <td class="py-4">
+                                            <div class="py-3 px-6 flex items-center cursor-pointer">
+                                            {{ $index }}
+                                            </div>
+                                        </td>
+                                    @endif
+                                    @foreach($this->columns() as $column)
+                                        <td class="py-4">
+                                            <div class="py-3 px-6 flex items-center cursor-pointer">
+                                                @php
+                                                    $val = '';
 
-                                            if (count($column->key) > 1) {
-                                                $data = [];
-                                                foreach ($column->key as $key) {
-                                                    array_push($data, $key);
-                                                }
-                                                $val = implode('.', $data);
-                                            } else {
-                                                $val = $row[$column->key[0]];
-                                            }
+                                                    if (count($column->key) > 1) {
+                                                        $data = [];
+                                                        foreach ($column->key as $key) {
+                                                            array_push($data, $key);
+                                                        }
+                                                        $val = implode('.', $data);
+                                                    } else {
+                                                        $val = $row[$column->key[0]];
+                                                    }
 
-                                        @endphp
-                                        <x-dynamic-component
-                                            :component="$column->component"
-                                            :value="$val"
-                                        >
-                                        </x-dynamic-component>
-                                    </div>
-                                    </td>
-                                @endforeach
+                                                @endphp
+                                                <x-dynamic-component
+                                                    :component="$column->component"
+                                                    :value="$val"
+                                                >
+                                                </x-dynamic-component>
+                                            </div>
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr class="bg-white border-b hover:bg-gray-50 py-4">
+                                @php
+                                    $size = count($this->columns());
+                                    $colspan = $showIndexColumn ? $size+1 : $size;
+                                @endphp
+                                <td class="py-4 text-center" colspan="{{ $colspan }}">
+                                    Data Kosong
+                                </td>
                             </tr>
-                        @endforeach
+                        @endif
+
                     </tbody>
                   </table>
             </div>

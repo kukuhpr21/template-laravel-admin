@@ -16,6 +16,8 @@ abstract class Table extends Component
 
     public string $buttonAddLink = '#';
 
+    public bool $showIndex = false;
+
     public $perPage = 10;
 
     public $page = 1;

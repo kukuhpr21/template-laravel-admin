@@ -12,6 +12,8 @@ class RoleTable extends Table
 {
     public bool $buttonAdd = true;
 
+    public bool $showIndex = true;
+
     public $perPage = 2;
 
     public function __construct()
@@ -26,7 +28,6 @@ class RoleTable extends Table
     public function columns() : array
     {
         return [
-            Column::make(['id'], 'ID'),
             Column::make(['name'], 'Name'),
             Column::make(['id'], 'Action')->component('columns.roles.action')
         ];

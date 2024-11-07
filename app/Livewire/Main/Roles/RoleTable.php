@@ -14,7 +14,7 @@ class RoleTable extends Table
 
     public bool $showIndexColumn = true;
 
-    public $perPage = 2;
+    public $perPage = 5;
 
     public $search = '';
 

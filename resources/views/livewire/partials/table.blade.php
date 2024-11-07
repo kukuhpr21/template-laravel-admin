@@ -8,8 +8,9 @@
     @endif
 
     <div class="flex flex-row justify-end">
-        <x-input type="text" placeholder="Pencarian..." name="search" class="bg-slate-300 focus:bg-slate-300 w-full lg:w-1/4 md:w-1/2"/>
+        <input type="text" wire:keydown="query()" wire:model="search" placeholder="Pencarian..." class="bg-slate-300 focus:bg-slate-300 w-full lg:w-1/4 md:w-1/2 py-4 px-3 my-3 rounded-2xl focus:outline-none focus:ring-0 border-0 ">
     </div>
+
     <div class="-m-1.5 overflow-x-auto shadow-md rounded-lg">
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="overflow-hidden">

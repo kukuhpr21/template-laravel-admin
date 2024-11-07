@@ -28,6 +28,14 @@ abstract class Table extends Component
 
     public $search = '';
 
+    protected $queryString = ['search'];
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+
     public abstract function query(): Builder;
 
     public abstract function columns(): array;
@@ -38,6 +46,11 @@ abstract class Table extends Component
         ->query()
         ->when($this->sortBy !== '', function ($query) {
             $query->orderBy($this->sortBy, $this->sortDirection);
+        })
+        ->when($this->search !== '', function($query) {
+            foreach ($this->columns() as $item) {
+                $query->where($item->key[0], 'like', '%'.$this->search.'%');
+            }
         })
         ->paginate($this->perPage);
     }

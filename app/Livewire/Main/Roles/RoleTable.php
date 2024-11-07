@@ -16,10 +16,15 @@ class RoleTable extends Table
 
     public $perPage = 2;
 
+    public $search = '';
+
+    protected $queryString = ['search'];
+
     public function __construct()
     {
         $this->buttonAddLink = route('roles-add');
     }
+
     public function query() : Builder
     {
         return Role::query();

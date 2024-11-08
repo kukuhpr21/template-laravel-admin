@@ -15,6 +15,8 @@ class Role extends Model
 
     protected $hidden = ['pivot'];
 
+    protected $guarded = [];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user_has_roles');

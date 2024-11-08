@@ -1,4 +1,4 @@
-@props(['type', 'placeholder' => '...', 'name', 'class' => 'bg-slate-100 focus:bg-slate-200', 'form' => false])
+@props(['type', 'placeholder' => '...', 'name', 'class' => 'bg-slate-200 focus:bg-slate-200', 'form' => false])
 @php
     $lowerName = strtolower($name);
     $model = $form ? 'form.'.$lowerName : $lowerName;

@@ -8,14 +8,14 @@
     @endif
 
     <div class="flex flex-row justify-between">
-        <select wire:change="query()" wire:model="perPage" class="py-1 px-4 my-3 w-fit bg-slate-300 focus:bg-slate-300 rounded-2xl text-sm disabled:opacity-50 disabled:pointer-events-none">
+        <select wire:change="query()" wire:model="perPage" class="py-1 px-4 my-3 w-fit bg-slate-300 focus:bg-slate-300 rounded-2xl text-sm disabled:opacity-50 disabled:pointer-events-none hover:drop-shadow-xl">
             <option>5</option>
             <option>10</option>
             <option>15</option>
             <option>20</option>
             <option>25</option>
         </select>
-        <input type="text" wire:keydown="query()" wire:model="search" placeholder="Pencarian..." class="bg-slate-300 focus:bg-slate-300 w-full lg:w-1/4 md:w-1/2 py-4 px-3 my-3 rounded-2xl focus:outline-none focus:ring-0 border-0 ">
+        <input type="text" wire:keydown="query()" wire:model="search" placeholder="Pencarian..." class="bg-slate-200 focus:bg-slate-200 w-full lg:w-1/4 md:w-1/2 py-4 px-3 my-3 rounded-2xl focus:outline-none focus:ring-0 border-0 hover:drop-shadow-xl">
     </div>
 
     <div class="-m-1.5 overflow-x-auto shadow-md rounded-lg">

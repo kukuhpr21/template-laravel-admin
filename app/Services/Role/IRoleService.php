@@ -3,10 +3,11 @@
 namespace App\Services\Role;
 
 use App\Dto\KeyValDto;
+use App\Dto\ResponseServiceDto;
 
 interface IRoleService
 {
-    public function save(string $name): bool;
+    public function save(string $name): ResponseServiceDto;
     public function get(string $id): KeyValDto;
     public function all(): array;
     public function delete(string $id): bool;

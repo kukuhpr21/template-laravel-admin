@@ -3,6 +3,7 @@
 $baseClasses = 'hover:shadow-xl my-3';
 
 $colorClasses = match ($color) {
+    'slate' => 'bg-slate-500 text-white hover:bg-slate-600',
     'blue' => 'bg-blue-500 text-white hover:bg-blue-600',
     'red' => 'bg-red-500 text-white hover:bg-red-600',
     'green' => 'bg-green-500 text-white hover:bg-green-600',

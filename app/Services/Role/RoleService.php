@@ -3,19 +3,25 @@
 namespace App\Services\Role;
 
 use App\Dto\KeyValDto;
+use App\Dto\ResponseServiceDto;
 use App\Models\Role;
 use App\Models\RoleHasMenu;
 use App\Models\UserHasRole;
 
 class RoleService implements IRoleService
 {
-    public function save(string $name): bool
+    public function save(string $name): ResponseServiceDto
     {
         $id = strtolower(str_replace(" ", "_", $name));
-        return Role::create([
-            'id'   => $id,
-            'name' => $name
-        ]);
+        $model       = new Role();
+        $model->id   = $id;
+        $model->name = $name;
+
+        // compose response
+        $detailMessage = 'menambahkan data';
+        $result = $model->save();
+        $message = $result ? 'Berhasil ' : 'Gagal ';
+        return new ResponseServiceDto($result, $message.$detailMessage);
     }
 
     public function get(string $id): KeyValDto

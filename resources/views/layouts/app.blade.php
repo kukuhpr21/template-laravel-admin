@@ -17,8 +17,8 @@
     @yield('css')
     @yield('js-up')
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>

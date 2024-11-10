@@ -52,7 +52,7 @@ class Sidebar extends Component
                 $tree .= '</ul>';
             } else {
                 $tree .= '<li class="my-2">';
-                $tree .= '<a class="flex items-center gap-x-3.5 py-2 px-3 '. $isActive .' text-sm text-gray-700 rounded-lg hover:bg-gray-100" href="'.route($item['link_alias']).'">';
+                $tree .= '<a wire:navigate class="flex items-center gap-x-3.5 py-2 px-3 '. $isActive .' text-sm text-gray-700 rounded-lg hover:bg-gray-100" href="'.route($item['link_alias']).'">';
                 $tree .= $icon;
                 $tree .= $item['name'];
                 $tree .= '</a>';

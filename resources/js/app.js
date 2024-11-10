@@ -12,3 +12,7 @@ import Swal from 'sweetalert2'
 window.Chart = Chart;
 window.L = L;
 window.Swal = Swal;
+
+document.addEventListener('livewire:navigated', 'wire:click', () => {
+    window.HSStaticMethods.autoInit();
+});

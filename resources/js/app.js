@@ -13,6 +13,6 @@ window.Chart = Chart;
 window.L = L;
 window.Swal = Swal;
 
-document.addEventListener('livewire:navigated', 'wire:click', () => {
+document.addEventListener('livewire:navigated', () => {
     window.HSStaticMethods.autoInit();
 });

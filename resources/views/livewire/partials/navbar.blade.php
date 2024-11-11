@@ -4,8 +4,8 @@
             <i class="ri-align-left ri-xl"></i>
         </button>
         <div class="flex flex-col">
-            <span class="text-sm text-slate-400 font-light">Hello,</span>
-            <span class="text-base text-slate-700 font-medium">{{ $name }}</span>
+            <span class="sm:text-sm text-xs text-slate-400 font-light">Hello,</span>
+            <span class="sm:text-base text-sm text-slate-700 font-medium">{{ $name }}</span>
         </div>
     </div>
     <div class="hs-dropdown relative [--trigger:hover] inline-flex mr-2">
@@ -15,7 +15,7 @@
                     <i class="ri-user-line lg:ri-xl ri-lg text-gray-300"></i>
                 </span>
                 <div class="flex flex-col items-start">
-                    <span class="text-sm text-slate-700 lg:font-normal font-light">{{ $name }}</span>
+                    <span class="sm:text-sm text-xs text-slate-700 lg:font-normal font-light">{{ $name }}</span>
                     <span class="text-xs text-slate-400 lg:font-light font-extralight">{{ $role }}</span>
                 </div>
             </div>

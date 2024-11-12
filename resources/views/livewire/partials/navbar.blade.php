@@ -9,10 +9,10 @@
         </div>
     </div>
     <div class="hs-dropdown relative [--trigger:hover] inline-flex mr-2">
-        <button id="hs-dropdown-with-dividers" type="button" class="hs-dropdown-toggle lg:py-3 py-2 lg:px-4 px-3 inline-flex items-center lg:gap-x-2 gap-x-1 lg:text-sm text-xs lg:font-medium font-normal rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+        <button id="hs-dropdown-with-dividers" type="button" class="hs-dropdown-toggle lg:py-3 py-2 lg:px-4 px-3 inline-flex items-center lg:gap-x-2 gap-x-1 lg:text-sm text-xs lg:font-medium font-normal rounded-full border border-gray-300 bg-white text-gray-800 drop-shadow-xl hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
             <div class="flex flex-row lg:gap-2 gap-1">
-                <span class="flex size-[38px] items-center justify-center bg-gray-100 rounded-full overflow-hidden">
-                    <i class="ri-user-line lg:ri-xl ri-lg text-gray-300"></i>
+                <span class="flex size-[38px] items-center justify-center text-gray-800 bg-gray-300 rounded-full overflow-hidden">
+                    <i class="ri-user-line lg:ri-xl ri-lg"></i>
                 </span>
                 <div class="flex flex-col items-start">
                     <span class="sm:text-sm text-xs text-slate-700 lg:font-normal font-light">{{ $name }}</span>

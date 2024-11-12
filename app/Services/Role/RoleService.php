@@ -21,7 +21,7 @@ class RoleService implements IRoleService
         $detailMessage = 'menambahkan data';
         $result = $model->save();
         $message = $result ? 'Berhasil ' : 'Gagal ';
-        return new ResponseServiceDto($result, $message.$detailMessage);
+        return new ResponseServiceDto($result, $message.$detailMessage, $model);
     }
 
     public function get(string $id): KeyValDto
@@ -50,12 +50,13 @@ class RoleService implements IRoleService
         return false;
     }
 
-    public function update(string $id, string $newName): bool
+    public function update(string $id, string $newName): ResponseServiceDto
     {
         if ($this->delete($id)) {
-            return $this->save($newName);
+            $result = $this->save($newName);
+            return new ResponseServiceDto($result->status, 'Berhasil merubah data', $result->data);
         }
-        return false;
+        return new ResponseServiceDto(false, 'Gagal merubah Data, role sudah digunakan');
     }
 
     private function roleIsNotUsed(string $roleID): bool

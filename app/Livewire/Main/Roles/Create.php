@@ -20,11 +20,15 @@ class Create extends Component
         $this->roleService = new RoleService();
         $result = $this->roleService->save($request['name']);
 
-        $this->reset();
 
-        $icon    = $result ? 'success' : 'error';
-        $message = ($result ? 'Berhasil' : 'Gagal')." menambahkan data";
-        $this->dispatch('sweet-alert-notif', icon: $icon, title: $message);
+        $icon = $result->status ? 'success' : 'error';
+        $this->dispatch('sweet-alert-notif', icon: $icon, title: $result->message);
+
+        if ($result->status) {
+            return redirect()->route('roles');
+        } else {
+            $this->reset();
+        }
     }
 
     public function render()

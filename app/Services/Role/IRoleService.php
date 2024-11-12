@@ -11,5 +11,5 @@ interface IRoleService
     public function get(string $id): KeyValDto;
     public function all(): array;
     public function delete(string $id): bool;
-    public function update(string $id, string $newName): bool;
+    public function update(string $id, string $newName): ResponseServiceDto;
 }

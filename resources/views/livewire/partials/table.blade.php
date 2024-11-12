@@ -7,8 +7,8 @@
         </a>
     @endif
 
-    <div class="flex flex-row justify-between">
-        <select wire:change="query()" wire:model="perPage" class="py-1 px-4 my-3 w-fit bg-slate-300 focus:bg-slate-300 rounded-2xl text-sm disabled:opacity-50 disabled:pointer-events-none hover:drop-shadow-xl">
+    <div class="flex flex-col sm:flex-row sm:justify-between ">
+        <select wire:change="query()" wire:model="perPage" class="py-1 px-4 my-3 w-fit bg-slate-300 focus:bg-slate-300 rounded-md sm:rounded-2xl text-xs sm:text-sm disabled:opacity-50 disabled:pointer-events-none hover:drop-shadow-xl">
             <option>5</option>
             <option>10</option>
             <option>15</option>

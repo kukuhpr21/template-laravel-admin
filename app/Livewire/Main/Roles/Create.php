@@ -25,11 +25,6 @@ class Create extends Component
         $icon    = $result ? 'success' : 'error';
         $message = ($result ? 'Berhasil' : 'Gagal')." menambahkan data";
         $this->dispatch('sweet-alert-notif', icon: $icon, title: $message);
-
-        session()->flash('notif', [
-            'status' => $icon,
-            'message' => $message
-        ]);
     }
 
     public function render()

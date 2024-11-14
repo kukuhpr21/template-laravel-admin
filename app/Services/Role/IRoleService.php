@@ -8,7 +8,7 @@ use App\Dto\ResponseServiceDto;
 interface IRoleService
 {
     public function save(string $name): ResponseServiceDto;
-    public function get(string $id): KeyValDto;
+    public function get(string $id): KeyValDto|null;
     public function all(): array;
     public function delete(string $id): bool;
     public function update(string $id, string $newName): ResponseServiceDto;

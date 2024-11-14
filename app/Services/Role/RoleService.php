@@ -12,21 +12,25 @@ class RoleService implements IRoleService
 {
     public function save(string $name): ResponseServiceDto
     {
-        $id = strtolower(str_replace(" ", "_", $name));
         $model       = new Role();
-        $model->id   = $id;
+        $model->id   = $this->getID($name);
         $model->name = $name;
 
         // compose response
+        $result        = $model->save();
         $detailMessage = 'menambahkan data';
-        $result = $model->save();
-        $message = $result ? 'Berhasil ' : 'Gagal ';
-        return new ResponseServiceDto($result, $message.$detailMessage, $model);
+        $message       = $result ? 'Berhasil ' : 'Gagal ';
+        $message       = $message.$detailMessage;
+        return new ResponseServiceDto($result, $message, $model);
     }
 
-    public function get(string $id): KeyValDto
+    public function get(string $id):KeyValDto|null
     {
         $role = Role::where('id', $id)->first();
+
+        if (!$role) {
+            return null;
+        }
         return new KeyValDto($role->id, $role->name);
     }
 
@@ -52,11 +56,15 @@ class RoleService implements IRoleService
 
     public function update(string $id, string $newName): ResponseServiceDto
     {
-        if ($this->delete($id)) {
-            $result = $this->save($newName);
-            return new ResponseServiceDto($result->status, 'Berhasil merubah data', $result->data);
+        $role = $this->get($this->getID($newName));
+
+        if ($role == null) {
+            if ($this->delete($id)) {
+                $result = $this->save($newName);
+                return new ResponseServiceDto($result->status, 'Berhasil merubah data', $result->data);
+            }
         }
-        return new ResponseServiceDto(false, 'Gagal merubah Data, role sudah digunakan');
+        return new ResponseServiceDto(false, 'Gagal merubah Data, role baru sudah digunakan');
     }
 
     private function roleIsNotUsed(string $roleID): bool
@@ -64,5 +72,10 @@ class RoleService implements IRoleService
         $roleHasMenu = RoleHasMenu::where('role_id', $roleID)->first();
         $userHasRole = UserHasRole::where('role_id', $roleID)->first();
         return !$roleHasMenu && !$userHasRole;
+    }
+
+    private function getID(string $name): string
+    {
+        return  strtolower(str_replace(" ", "_", $name));
     }
 }

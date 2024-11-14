@@ -3,7 +3,6 @@
 namespace App\Livewire\Main\Roles;
 
 use App\Models\Role;
-use Livewire\Component;
 use App\Utils\CryptUtils;
 use App\Utils\Table\Column;
 use App\Livewire\Partials\Table;

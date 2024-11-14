@@ -33,14 +33,19 @@ class Edit extends Component
     {
         $request = $this->validate();
         $result  = $this->roleService->update($this->id,$request['name']);
-        // $this->id = $result->data['id'];
 
         $icon     = $result->status ? 'success' : 'error';
         $this->id = $result->status ? $result->data['id'] : $this->id;
-        $this->dispatch('sweet-alert-notif', icon: $icon, title: $result->message);
 
         if ($result->status) {
+            session()->flash('notif', [
+                'icon' => $icon,
+                'message' => $result->message
+            ]);
             return redirect()->route('roles');
+        } else {
+            $this->dispatch('sweet-alert-notif', icon: $icon, title: $result->message);
+
         }
     }
 

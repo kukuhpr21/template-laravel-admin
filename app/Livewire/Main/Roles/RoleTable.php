@@ -50,7 +50,12 @@ class RoleTable extends Table
 
     public function delete($id)
     {
-        $this->roleService->delete($id);
+        $result = $this->roleService->delete($id);
+
+        session()->flash('notif', [
+            'icon' => $result ? 'success' : 'error',
+            'message' => $result ? 'Berhasil hapus data' : 'Gagal hapus data'
+        ]);
 
         return redirect()->route('roles');
     }
@@ -69,7 +74,7 @@ class RoleTable extends Table
                 confirmtext: 'Hapus',
                 confirmlink: route('roles-delete', ['id' => $id]));
         } else {
-            $this->dispatch('sweet-alert-notif', icon: 'warning', title: 'Role tidak ditemukan');
+            $this->dispatch('sweet-alert-notif', icon: 'error', title: 'Role tidak ditemukan');
         }
     }
 }

@@ -22,12 +22,18 @@ class Create extends Component
 
 
         $icon = $result->status ? 'success' : 'error';
-        $this->dispatch('sweet-alert-notif', icon: $icon, title: $result->message);
 
         if ($result->status) {
+            $this->reset();
+
+            session()->flash('notif', [
+                'icon' => $icon,
+                'message' => $result->message
+            ]);
+
             return redirect()->route('roles');
         } else {
-            $this->reset();
+            $this->dispatch('sweet-alert-notif', icon: $icon, title: $result->message);
         }
     }
 

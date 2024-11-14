@@ -10,6 +10,6 @@ interface IRoleService
     public function save(string $name): ResponseServiceDto;
     public function get(string $id): KeyValDto|null;
     public function all(): array;
-    public function delete(string $id): bool;
+    public function delete(string $id): ResponseServiceDto;
     public function update(string $id, string $newName): ResponseServiceDto;
 }

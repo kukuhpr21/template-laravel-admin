@@ -46,12 +46,13 @@ class RoleService implements IRoleService
         return $result;
     }
 
-    public function delete(string $id): bool
+    public function delete(string $id): ResponseServiceDto
     {
         if ($this->roleIsNotUsed($id)) {
-            return Role::where('id', $id)->delete();
+            $result = Role::where('id', $id)->delete();
+            return new ResponseServiceDto($result, 'Berhasil hapus data');
         }
-        return false;
+        return new ResponseServiceDto(false, 'Gagal hapus data, role sedang digunakan');
     }
 
     public function update(string $id, string $newName): ResponseServiceDto

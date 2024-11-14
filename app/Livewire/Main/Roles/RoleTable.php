@@ -53,8 +53,8 @@ class RoleTable extends Table
         $result = $this->roleService->delete($id);
 
         session()->flash('notif', [
-            'icon' => $result ? 'success' : 'error',
-            'message' => $result ? 'Berhasil hapus data' : 'Gagal hapus data'
+            'icon' => $result->status ? 'success' : 'error',
+            'message' => $result->message
         ]);
 
         return redirect()->route('roles');

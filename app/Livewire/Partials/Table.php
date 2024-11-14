@@ -4,6 +4,7 @@ namespace App\Livewire\Partials;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Eloquent\Builder;
 
 abstract class Table extends Component
@@ -30,11 +31,12 @@ abstract class Table extends Component
 
     protected $queryString = ['search'];
 
+    protected $updatesQueryString = ['page', 'perPage'];
+
     public function updatingSearch()
     {
         $this->resetPage();
     }
-
 
     public abstract function query(): Builder;
 
@@ -54,6 +56,13 @@ abstract class Table extends Component
         })
         ->paginate($this->perPage);
     }
+
+    // public function updatingPerPage()
+    // {
+    //     $this->page = 1;
+    //     dd(Route::currentRouteName());
+    //     return redirect()->route(Route::currentRouteName(), ['perPage' => $this->perPage]);
+    // }
 
     public function sort($key) {
         $this->resetPage();

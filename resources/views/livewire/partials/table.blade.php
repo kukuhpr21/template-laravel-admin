@@ -41,7 +41,7 @@
                             @endforeach
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="overflow-auto">
                         @if (count($this->data()) > 0)
                             @php
                                 $index = 0;

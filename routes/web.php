@@ -34,7 +34,20 @@ Route::middleware([EnsureSessionIsValid::class])->group(function () {
         });
 
 
-        Route::get('menus', \App\Livewire\Main\Roles\Index::class)->name('menus');
+        Route::prefix('menus')->group(function () {
+
+            Route::get('/', \App\Livewire\Main\Menus\Index::class)->name('menus');
+
+            Route::prefix('add')->group(function () {
+                Route::get('/', \App\Livewire\Main\Menus\Create::class)->name('menus-add');
+            });
+
+            Route::prefix('edit')->group(function () {
+                Route::get('{id}', \App\Livewire\Main\Menus\Edit::class)->name('menus-edit');
+            });
+
+            Route::get('delete/{id}', [\App\Livewire\Main\Menus\MenuTable::class, 'delete'])->name('menus-delete');
+        });
 
         Route::get('permissions', \App\Livewire\Main\Roles\Index::class)->name('permissions');
 

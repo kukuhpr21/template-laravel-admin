@@ -4,12 +4,20 @@ namespace App\Livewire\Main\Roles;
 
 use App\Models\Role;
 use Livewire\Component;
+use App\Utils\CryptUtils;
 use App\Utils\Table\Column;
 use App\Livewire\Partials\Table;
+use App\Services\Role\RoleService;
 use Illuminate\Database\Eloquent\Builder;
 
 class RoleTable extends Table
 {
+    private RoleService $roleService;
+
+    private CryptUtils $cryptUtils;
+
+    public $id;
+
     public bool $buttonAdd = true;
 
     public bool $showIndexColumn = true;
@@ -23,6 +31,8 @@ class RoleTable extends Table
     public function __construct()
     {
         $this->buttonAddLink = route('roles-add');
+        $this->roleService = new RoleService();
+        $this->cryptUtils = new CryptUtils();
     }
 
     public function query() : Builder
@@ -40,6 +50,26 @@ class RoleTable extends Table
 
     public function delete($id)
     {
-        dd("masuk delete : ".$id);
+        $this->roleService->delete($id);
+
+        return redirect()->route('roles');
+    }
+
+    public function deleteConfirm($id)
+    {
+        $id = $this->cryptUtils::dec($id);
+        $role = $this->roleService->get($id);
+
+        if ($role) {
+            $this->dispatch(
+                'sweet-alert-modal-confirm',
+                icon: 'info',
+                title: 'Confirm',
+                text: 'Role '.$role->val.' akan dihapus ?',
+                confirmtext: 'Hapus',
+                confirmlink: route('roles-delete', ['id' => $id]));
+        } else {
+            $this->dispatch('sweet-alert-notif', icon: 'warning', title: 'Role tidak ditemukan');
+        }
     }
 }

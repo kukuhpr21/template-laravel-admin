@@ -29,6 +29,8 @@ Route::middleware([EnsureSessionIsValid::class])->group(function () {
             Route::prefix('edit')->group(function () {
                 Route::get('{id}', \App\Livewire\Main\Roles\Edit::class)->name('roles-edit');
             });
+
+            Route::get('delete/{id}', [\App\Livewire\Main\Roles\RoleTable::class, 'delete'])->name('roles-delete');
         });
 
 

@@ -43,17 +43,17 @@
                                 @php
                                     $index++;
                                 @endphp
-                                <tr class="bg-white border-b hover:bg-gray-200 hover:drop-shadow-xl hover:text-gray-600 text-base font-medium" wire:key="tr-{{ $index }}">
+                                <tr class="bg-white border-b hover:bg-gray-200 hover:drop-shadow-xl hover:text-gray-600 text-base font-normal" wire:key="tr-{{ $index }}">
                                     @if ($showIndexColumn)
                                         <td class="py-2">
-                                            <div class="py-3 px-4 flex items-center cursor-pointer">
+                                            <div class="py-2 px-4 flex items-center cursor-pointer">
                                             {{ $index }}
                                             </div>
                                         </td>
                                     @endif
                                     @foreach($this->columns() as $column)
-                                        <td class="py-4" wire:key="td-{{ $index }}">
-                                            <div class="py-3 px-4 flex items-center cursor-pointer">
+                                        <td class="py-2" wire:key="td-{{ $index }}">
+                                            <div class="py-2 px-4 flex items-center cursor-pointer">
                                                 @php
                                                     $val = '';
 

@@ -13,8 +13,6 @@ class MenuTable extends Table
 
     public bool $showIndexColumn = true;
 
-    public $perPage = 5;
-
     public $search = '';
 
     protected $queryString = ['search'];

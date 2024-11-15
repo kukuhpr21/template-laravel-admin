@@ -7,14 +7,7 @@
         </a>
     @endif
 
-    <div class="flex flex-col sm:flex-row sm:justify-between ">
-        <select wire:change="query()" wire:model="perPage" class="py-1 px-4 my-3 w-fit bg-slate-300 focus:bg-slate-300 rounded-md sm:rounded-2xl text-xs sm:text-sm disabled:opacity-50 disabled:pointer-events-none hover:drop-shadow-xl">
-            <option>5</option>
-            <option>10</option>
-            <option>15</option>
-            <option>20</option>
-            <option>25</option>
-        </select>
+    <div class="flex flex-col sm:flex-row sm:justify-end ">
         <input type="text" wire:keydown="query()" wire:model="search" placeholder="Pencarian..." class="bg-slate-200 focus:bg-slate-200 w-full lg:w-1/4 md:w-1/2 py-4 px-3 my-3 rounded-2xl focus:outline-none focus:ring-0 border-0 hover:drop-shadow-xl">
     </div>
 
@@ -22,7 +15,7 @@
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="overflow-hidden">
                 <table class="min-w-full text-sm text-left text-gray-500 rounded-lg">
-                    <thead class="text-xs text-gray-700 uppercase bg-slate-200">
+                    <thead class="text-xs text-gray-200 uppercase bg-slate-600">
                         <tr>
                             @if ($showIndexColumn)
                                 <th class="py-3">
@@ -41,7 +34,7 @@
                             @endforeach
                         </tr>
                     </thead>
-                    <tbody class="overflow-auto">
+                    <tbody>
                         @if (count($this->data()) > 0)
                             @php
                                 $index = 0;
@@ -50,17 +43,17 @@
                                 @php
                                     $index++;
                                 @endphp
-                                <tr class="bg-white border-b hover:bg-gray-50">
+                                <tr class="bg-white border-b hover:bg-gray-200 hover:drop-shadow-xl hover:text-gray-600 text-base font-medium" wire:key="tr-{{ $index }}">
                                     @if ($showIndexColumn)
-                                        <td class="py-4">
-                                            <div class="py-3 px-6 flex items-center cursor-pointer">
+                                        <td class="py-2">
+                                            <div class="py-3 px-4 flex items-center cursor-pointer">
                                             {{ $index }}
                                             </div>
                                         </td>
                                     @endif
                                     @foreach($this->columns() as $column)
-                                        <td class="py-4">
-                                            <div class="py-3 px-6 flex items-center cursor-pointer">
+                                        <td class="py-4" wire:key="td-{{ $index }}">
+                                            <div class="py-3 px-4 flex items-center cursor-pointer">
                                                 @php
                                                     $val = '';
 

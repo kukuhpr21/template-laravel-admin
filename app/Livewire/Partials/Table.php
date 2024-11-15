@@ -19,9 +19,9 @@ abstract class Table extends Component
 
     public bool $showIndexColumn = false;
 
-    public $perPage = 10;
+    private $perPage = 10;
 
-    public $page = 1;
+    private $page = 1;
 
     public $sortBy = '';
 
@@ -57,8 +57,14 @@ abstract class Table extends Component
         ->paginate($this->perPage);
     }
 
-    // public function updatingPerPage()
+    // public function updatPerPage()
     // {
+    //     return  $this->resetPage();
+    // }
+
+    // public function updatedPerPage()
+    // {
+    //     return  $this->resetPage();
     //     $this->page = 1;
     //     dd(Route::currentRouteName());
     //     return redirect()->route(Route::currentRouteName(), ['perPage' => $this->perPage]);

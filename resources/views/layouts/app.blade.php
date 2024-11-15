@@ -27,7 +27,7 @@
         <div class="flex flex-col w-full lg:pl-[270px] transition-all">
             <livewire:partials.navbar />
 
-            <div class="py-4 m-2 rounded-lg h-screen overflow-auto">
+            <div class="py-4 m-2 rounded-lg h-screen overflow-auto scrollbar-hide">
                 {{ $slot }}
             </div>
         </div>

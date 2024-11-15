@@ -16,6 +16,7 @@ export default {
   },
   plugins: [
     require('preline/plugin'),
+    require('tailwind-scrollbar-hide'),
   ],
 }
 

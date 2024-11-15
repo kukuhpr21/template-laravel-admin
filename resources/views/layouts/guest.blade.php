@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <x-layout class="flex h-screen w-screen items-center justify-center">
+    <x-layout class="flex h-screen w-screen items-center justify-center scrollbar-hide">
         {{ $slot }}
     </x-layout>
     @livewireScripts

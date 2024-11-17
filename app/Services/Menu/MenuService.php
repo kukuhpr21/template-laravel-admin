@@ -72,6 +72,15 @@ class MenuService implements IMenuService
         return $buildTree ? $this->buildTreeMenu($menus) : $menus;
     }
 
+    public function allParent(): array
+    {
+        return Menu::where('parent', 0)
+            ->orWhereRaw('id = parent')
+            ->orWhereRaw("link = '#'")
+            ->orderBy('order', 'asc')
+            ->get()->toArray();
+    }
+
     public function delete(string $id): bool
     {
         if ($this->menuIsNotUsed($id)) {
@@ -92,6 +101,7 @@ class MenuService implements IMenuService
         $menu->order = $dto->order;
         return $menu->save();
     }
+
     private function menuIsNotUsed(string $menuID): bool
     {
         $menuHasPermission = MenuHasPermission::where('menu_id', $menuID)->first();

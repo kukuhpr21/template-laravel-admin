@@ -3,7 +3,7 @@
     $lowerName = strtolower($name);
     $model = $form ? 'form.'.$lowerName : $lowerName;
     $color = "bg-".$class."-50 focus:bg-".$class."-50";
-    $classes = $color.' py-4 px-3 my-3 rounded-2xl border border border-slate-300 focus:outline-none focus:ring-0 hover:drop-shadow-xl focus:drop-shadow-xl';
+    $classes = $color.' py-4 px-3 my-3 rounded-2xl border border-slate-300 focus:outline-none focus:ring-0 hover:drop-shadow-xl focus:drop-shadow-xl';
 @endphp
 
 @if ($type != 'password')

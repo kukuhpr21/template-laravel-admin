@@ -57,3 +57,9 @@ document.addEventListener('sweet-alert-modal-confirm', () => {
         }
     });
 });
+
+document.querySelectorAll(".searachble-select").forEach((element, index) => {
+    element.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+    });
+});

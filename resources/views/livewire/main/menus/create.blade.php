@@ -1,7 +1,7 @@
 <x-page title="Tambah Menu Baru" :back="true" routeBack="menus">
     <div class="flex flex-col sm:flex-row gap-3">
         <x-form width="w-full sm:w-1/2">
-            <livewire:main.menus.searchable-select />
+            <livewire:main.menus.searchable-select-parent name="Parent"  :form="true"/>
 
             {{-- <x-select-label name="Parent" val_default_select="Pilih Parent" :items="$parents" :form="true"/> --}}
             @error('form.parent')

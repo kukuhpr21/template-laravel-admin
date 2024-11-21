@@ -15,9 +15,9 @@ class RoleService implements IRoleService
         $model       = new Role();
         $model->id   = $this->getID($name);
         $model->name = $name;
+        $result      = $model->save();
 
         // compose response
-        $result        = $model->save();
         $detailMessage = 'menambahkan data';
         $message       = $result ? 'Berhasil ' : 'Gagal ';
         $message       = $message.$detailMessage;

@@ -8,7 +8,7 @@
         @endif
         <span class="text-lg text-gray-500 font-semibold">{{ $title }}</span>
     </div>
-    <div @class(['pl-12' => $back, 'py-4'])>
+    <div @class(['pl-4 sm:pl-12' => $back, 'py-4'])>
         {{ $slot }}
     </div>
 </div>

@@ -3,25 +3,42 @@
 namespace App\Livewire\Main\Menus;
 
 use App\Dto\KeyValDto;
-use App\Livewire\Forms\CreateMenuForm;
-use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use App\Livewire\Forms\CreateMenuForm;
 use App\Services\Menu\MenuService;
+
 
 class Create extends Component
 {
-    private MenuService $menuService;
 
-    public CreateMenuForm $form;
+    private CreateMenuForm $form;
+
+    private MenuService $menuService;
 
     public function __construct() {
         $this->menuService = new MenuService();
+        $this->form = new CreateMenuForm();
     }
 
     public function submit()
     {
+        $result = $this->form->submit();
 
-        $this->form->submit();
+        $icon = $result->status ? 'success' : 'error';
+
+        if ($result->status) {
+            $this->reset();
+
+            session()->flash('notif', [
+                'icon' => $icon,
+                'message' => $result->message
+            ]);
+
+            return redirect()->route('menus');
+        } else {
+            $this->dispatch('sweet-alert-notif', icon: $icon, title: $result->message);
+        }
     }
 
     #[On('valueParentUpdated')]

@@ -6,22 +6,27 @@ use App\Dto\MenuDto;
 use App\Models\Menu;
 use App\Models\RoleHasMenu;
 use App\Models\UserHasMenu;
+use App\Dto\ResponseServiceDto;
 use App\Models\MenuHasPermission;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class MenuService implements IMenuService
 {
-    public function save(MenuDto $dto): bool
+    public function save(MenuDto $dto): ResponseServiceDto
     {
         $menu = new Menu();
         $menu->name = $dto->name;
         $menu->link = !empty($dto->link) ? $dto->link : '#';
         $menu->link_alias = !empty($dto->linkAlias) ? $dto->linkAlias : '#';
         $menu->icon = !empty($dto->icon) ? $dto->icon : '#';
-        $menu->parent = $dto->parent;
+        $menu->parent = $dto->parent != '#' ? $dto->parent : 0;
         $menu->order = $dto->order;
-        return $menu->save();
+        $result = $menu->save();
+
+        // compose respose
+        $detailMessage = 'menambahkan data';
+        $message       = $result ? 'Berhasil ' : 'Gagal ';
+        $message       = $message.$detailMessage;
+        return new ResponseServiceDto($result, $message);
     }
 
     public function get(string $id): MenuDto

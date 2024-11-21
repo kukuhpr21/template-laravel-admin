@@ -6,35 +6,30 @@
             @error('form.parent')
                 <x-invalid-input-form>{{$message}}</x-invalid-input-form>
             @enderror
+            <div class="flex flex-col w-full">
+                <x-input-label type="text" name="Name" :form="true"/>
+                @error('form.name')
+                    <x-invalid-input-form>{{$message}}</x-invalid-input-form>
+                @enderror
+            </div>
             <div class="flex flex-col sm:flex-row gap-4">
-                <div class="flex flex-col w-full sm:w-1/2">
-                    <x-input-label type="text" name="Name" :form="true"/>
-                    @error('form.name')
-                        <x-invalid-input-form>{{$message}}</x-invalid-input-form>
-                    @enderror
-                </div>
                 <div class="flex flex-col w-full sm:w-1/2">
                     <x-input-label type="text" name="Link" :form="true"/>
                     <x-description-input>Default value '#'</x-description-input>
-                    @error('form.link')
-                        <x-invalid-input-form>{{$message}}</x-invalid-input-form>
-                    @enderror
+                </div>
+                <div class="flex flex-col w-full sm:w-1/2">
+                    <x-input-label type="text" name="Link Alias" :form="true"/>
+                    <x-description-input>Default value '#'</x-description-input>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row gap-4">
                 <div class="flex flex-col w-full sm:w-1/2">
                     <x-input-label type="text" name="Icon" :form="true"/>
                     <x-description-input>Default value '#'</x-description-input>
-                    @error('form.icon')
-                        <x-invalid-input-form>{{$message}}</x-invalid-input-form>
-                    @enderror
                 </div>
                 <div class="flex flex-col w-full sm:w-1/2">
                     <x-input-label type="number" name="Order" :form="true"/>
                     <x-description-input>Default value '0'</x-description-input>
-                    @error('form.order')
-                        <x-invalid-input-form>{{$message}}</x-invalid-input-form>
-                    @enderror
                 </div>
             </div>
             <div class="flex w-full justify-end">

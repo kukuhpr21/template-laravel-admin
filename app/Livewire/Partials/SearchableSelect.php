@@ -3,9 +3,7 @@
 namespace App\Livewire\Partials;
 
 use Livewire\Component;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 
 abstract class SearchableSelect extends Component
 {
@@ -21,7 +19,7 @@ abstract class SearchableSelect extends Component
 
     public $searchSelect;
 
-    public $showList;
+    public $showList = false;
 
     public Collection $dataQuery;
 

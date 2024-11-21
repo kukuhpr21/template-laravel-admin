@@ -3,7 +3,7 @@
         $lowerName = strtolower($name);
         $model = $form ? 'form.'.$lowerName : $lowerName;
     @endphp
-    <select wire:click="query()" wire:model="{{$model}}" name="{{ $lowerName }}" class="searachble-select py-3 px-4 pe-9 block w-full bg-slate-50 focus:bg-slate-50 border border-slate-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+    <select wire:click="query()" wire:model="{{$model}}" name="{{ $lowerName }}" class="searachble-select py-3 px-4 pe-9 block w-full bg-slate-50 focus:bg-slate-50 border border-slate-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none hover:drop-shadow-xl">
         @if ($selected)
             <option value="{{ $selected }}" selected>{{ $selectedName }}</option>
         @else
@@ -11,7 +11,7 @@
         @endif
     </select>
     @if ($showList)
-        <div class="relative">
+        <div class="relative drop-shadow-xl">
             <!-- Search Input -->
             <input
                 type="text"

@@ -12,13 +12,13 @@ use App\Services\Menu\MenuService;
 class Create extends Component
 {
 
-    private CreateMenuForm $form;
+    public CreateMenuForm $form;
 
     private MenuService $menuService;
 
+
     public function __construct() {
         $this->menuService = new MenuService();
-        $this->form = new CreateMenuForm();
     }
 
     public function submit()

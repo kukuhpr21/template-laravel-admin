@@ -15,16 +15,16 @@ class CreateMenuForm extends Form
     #[Validate(['required'])]
     public string $name = "";
 
-    #[Validate(['required'])]
+    #[Validate(['nullable|string'])]
     public string $link = "";
 
-    #[Validate(['required'])]
+    #[Validate(['nullable|string'])]
     public string $link_alias = "";
 
-    #[Validate(['required'])]
+    #[Validate(['nullable|string'])]
     public string $icon = "";
 
-    #[Validate(['required|integer'])]
+    #[Validate(['nullable|integer'])]
     public string $order = "";
 
     private MenuService $menuService;
@@ -43,6 +43,7 @@ class CreateMenuForm extends Form
 
     public function submit()
     {
+        dd($this->validate());
         $request = $this->validate();
         $this->menuService = new MenuService();
         return $this->menuService->save(new MenuDto(

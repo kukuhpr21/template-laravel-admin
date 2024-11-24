@@ -31,7 +31,7 @@ class SearchableSelectParent extends SearchableSelect
         $parents        = array();
         $allParent      = $this->menuService->allParent();
 
-        array_push($parents, ['id' => '#', 'name' => 'Default Parent']);
+        array_push($parents, ['id' => '#', 'name' => 'Root']);
 
         foreach ($allParent as $item) {
             array_push($parents, ['id' => $item['id'], 'name' => $item['name']]);

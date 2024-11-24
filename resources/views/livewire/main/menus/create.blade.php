@@ -3,33 +3,21 @@
         <x-form width="w-full sm:w-1/2">
             <x-label name="Parent"/>
             <livewire:main.menus.searchable-select-parent name="Parent" :form="true"/>
-            @error('form.parent')
-                <x-invalid-input-form>{{$message}}</x-invalid-input-form>
-            @enderror
-            <div class="flex flex-col w-full">
-                <x-input-label type="text" name="Name" :form="true"/>
-                @error('form.name')
-                    <x-invalid-input-form>{{$message}}</x-invalid-input-form>
-                @enderror
-            </div>
+            <x-input type="text" name="Name" :form="true"/>
             <div class="flex flex-col sm:flex-row gap-4">
                 <div class="flex flex-col w-full sm:w-1/2">
-                    <x-input-label type="text" name="Link" :form="true"/>
-                    <x-description-input>Default value '#'</x-description-input>
+                    <x-input type="text" name="Link" :form="true" desc="Default value '#'"/>
                 </div>
                 <div class="flex flex-col w-full sm:w-1/2">
-                    <x-input-label type="text" name="Link Alias" :form="true"/>
-                    <x-description-input>Default value '#'</x-description-input>
+                    <x-input type="text" name="Link Alias" :form="true" desc="Default value '#'"/>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row gap-4">
                 <div class="flex flex-col w-full sm:w-1/2">
-                    <x-input-label type="text" name="Icon" :form="true"/>
-                    <x-description-input>Default value '#'</x-description-input>
+                    <x-input type="text" name="Icon" :form="true" desc="Default value '#'"/>
                 </div>
                 <div class="flex flex-col w-full sm:w-1/2">
-                    <x-input-label type="number" name="Order" :form="true"/>
-                    <x-description-input>Default value '0'</x-description-input>
+                    <x-input type="number" name="Order" :form="true" desc="Default value '0'"/>
                 </div>
             </div>
             <div class="flex w-full justify-end">

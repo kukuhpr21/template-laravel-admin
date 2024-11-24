@@ -1,2 +1,2 @@
 @props(['name'])
-<label for="{{ strtolower($name) }}" class="block text-gray-800 py-2">{{ $name }}</label>
+<label for="{{ strtolower($name) }}" class="block text-gray-800 py-1">{{ $name }}</label>

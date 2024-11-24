@@ -6,7 +6,11 @@ use App\Dto\KeyValDto;
 use Livewire\Component;
 use App\Livewire\Forms\ChooseRoleForm;
 use App\Services\Session\SessionService;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.guest')]
+#[Title('Choose Role')]
 class ChooseRole extends Component
 {
     public ChooseRoleForm $form;

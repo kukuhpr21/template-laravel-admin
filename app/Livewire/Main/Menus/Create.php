@@ -58,6 +58,9 @@ class Create extends Component
             array_push($parents, new KeyValDto($item['id'], $item['name']));
         }
 
-        return view('livewire.main.menus.create', compact('parents'));
+        // tree menu
+        $menus = $this->menuService->all(true);
+
+        return view('livewire.main.menus.create', compact('parents', 'menus'));
     }
 }

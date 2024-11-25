@@ -14,4 +14,5 @@ interface IMenuService
     public function allParent(): array;
     public function delete(string $id): bool;
     public function update(MenuDto $dto): bool;
+    public function makeHTMLSiderbar(array $menus, array $segments): string;
 }

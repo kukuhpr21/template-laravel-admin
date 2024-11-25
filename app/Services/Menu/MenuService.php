@@ -43,27 +43,33 @@ class MenuService implements IMenuService
         );
     }
 
-    public function all(): array
+    public function all(bool $buildTree = false): array
     {
-        $menus = Menu::orderBy('id', 'asc')->all();
-        $result = array();
-        if ($menus) {
-            foreach ($menus as $menu) {
-                array_push(
-                    $result,
-                    new MenuDto(
-                        $menu->id,
-                        $menu->name,
-                        $menu->link,
-                        $menu->linkAlias,
-                        $menu->icon,
-                        $menu->parent,
-                        $menu->order
-                    )
-                );
+        $menus = Menu::orderBy('id', 'asc')->get();
+
+        if ($buildTree) {
+            return $this->buildTreeMenu($menus->toArray());
+        } else {
+            $result = array();
+            if ($menus) {
+                foreach ($menus as $menu) {
+                    array_push(
+                        $result,
+                        new MenuDto(
+                            $menu->id,
+                            $menu->name,
+                            $menu->link,
+                            $menu->linkAlias,
+                            $menu->icon,
+                            $menu->parent,
+                            $menu->order
+                        )
+                    );
+                }
             }
+            return $result;
         }
-        return $result;
+
     }
 
     public function allByUser(string $userID, bool $buildTree = true): array
@@ -135,6 +141,84 @@ class MenuService implements IMenuService
             }
         }
 
+        return $tree;
+    }
+
+    public function makeHTMLSiderbar(array $menus, array $segments): string
+    {
+        $tree = '';
+
+        foreach ($menus as $item) {
+            $isActive = implode('/', $segments) === $item['link'] ? 'bg-gray-200' : '';
+
+            $icon = '';
+
+            if ($item['icon'] != '#') {
+                $icon = '<i class="'.$item['icon'].' ri-lg"></i>';
+            }
+
+            if ($item['children']) {
+                $id = $item['id'].'-accordion';
+                $tree .= '<li class="hs-accordion" id="'.$id.'">';
+                $tree .= '<button type="button" class="hs-accordion-toggle '. $isActive .' hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-3 text-sm text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100" aria-expanded="true" aria-controls="'.$id.'">';
+                $tree .= $icon;
+                $tree .= $item['name'];
+                $tree .= '<svg class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+                $tree .= '<svg class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+                $tree .= '</button>';
+                $tree .= '<div id="'.$id.'" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden" role="region" aria-labelledby="'.$id.'">';
+                $tree .= '<ul class="hs-accordion-group p-2 gap-2" data-hs-accordion-always-open>';
+                $tree .= self::makeHTMLSiderbar($item['children'], $segments);
+                $tree .= '</ul>';
+            } else {
+                $tree .= '<li class="my-2">';
+                $tree .= '<a wire:navigate class="flex items-center gap-x-3.5 py-2 px-3 '. $isActive .' text-sm text-gray-700 rounded-lg hover:bg-gray-100" href="'.route($item['link_alias']).'">';
+                $tree .= $icon;
+                $tree .= $item['name'];
+                $tree .= '</a>';
+            }
+
+           $tree .= '</li>';
+        }
+        return $tree;
+    }
+
+    public function makeHTMLMenu(array $menus): string
+    {
+        $tree = '';
+
+        foreach ($menus as $item) {
+
+            $id = $item['id'];
+
+            // if ($item['children']) {
+            //     $tree .= '<div class="hs-accordion active" role="treeitem" aria-expanded="true" id="'.$id.'-heading">';
+            //     $tree .= '<div class="hs-accordion-heading py-0.5 flex items-center gap-x-0.5 w-full">
+            //               <button class="hs-accordion-toggle size-6 flex justify-center items-center hover:bg-gray-100 rounded-md focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" aria-expanded="true" aria-controls="'.$id.'-collapse">
+            //               <svg class="size-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            //               <path d="M5 12h14"></path>
+            //               <path class="hs-accordion-active:hidden block" d="M12 5v14"></path>
+            //               </svg>
+            //               </button>
+            //               <div class="grow hs-accordion-selectable hs-accordion-selected:bg-gray-100 px-1.5 rounded-md cursor-pointer">
+            //               <div class="flex items-center gap-x-3">
+            //               <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            //               <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path>
+            //               </svg>
+            //               <div class="grow">
+            //               <span class="text-sm text-gray-800"> '.$item['id'].'. '.$item["name"].' </span>
+            //               </div>
+            //               </div>
+            //               </div>
+            //               </div>';
+            //     $tree .= '<div id="'.$id.'-collapse" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="group" aria-labelledby="'.$id.'-heading">
+            //               <div class="hs-accordion-group ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-100" role="group" data-hs-accordion-always-open="true">';
+            // } else {
+
+            // }
+
+            $tree .= '</div>';
+        }
         return $tree;
     }
 }

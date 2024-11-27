@@ -60,7 +60,7 @@ class Create extends Component
 
         // tree menu
         $menus = $this->menuService->all(true);
-
+        $menus = $this->menuService->makeHTMLMenu($menus);
         return view('livewire.main.menus.create', compact('parents', 'menus'));
     }
 }

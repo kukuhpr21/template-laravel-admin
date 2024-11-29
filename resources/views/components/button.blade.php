@@ -1,6 +1,6 @@
 @props(['type', 'color', 'size', 'full'])
 @php
-$baseClasses = 'hover:shadow-xl my-3';
+$baseClasses = 'hover:shadow-xl my-3 cursor:pointer';
 
 $colorClasses = match ($color) {
     'slate' => 'bg-slate-500 text-white hover:bg-slate-600',
